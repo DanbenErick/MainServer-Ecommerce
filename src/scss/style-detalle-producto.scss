@@ -1,0 +1,31 @@
+@import "componenets/basic";
+@import "componenets/nav";
+@import "componenets/header";
+@import "componenets/section";
+
+section {
+  .detalle-producto {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    .detalle-imagen {
+      img {
+        width: 100%;
+      }
+    }
+    h2, p, button {
+      padding-bottom: 30px;
+    }
+    .detalle-informacion {
+      button {
+        background: $color-primary;
+        border: none;
+        color: white;
+        width: 180px;
+        padding: 10px 0;
+        &:hover {
+          background: darken($color-primary, 5);
+        }
+      }
+    }
+  }
+}

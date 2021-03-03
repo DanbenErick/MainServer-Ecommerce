@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+nav {
+  background: #004643;
+  font-family: Poppins;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 0px 243px;
+}
+nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li a:hover {
+  background: #003c39;
+}
+nav ul li img {
+  margin-right: 10px;
+}
+nav img {
+  width: 23px;
+  height: 23px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+header h1 {
+  width: 70%;
+  padding: 80px 0px;
+  font-family: Poppins;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+section > div {
+  width: 70%;
+}
+
+section .detalle-producto {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+section .detalle-producto .detalle-imagen img {
+  width: 100%;
+}
+section .detalle-producto h2, section .detalle-producto p, section .detalle-producto button {
+  padding-bottom: 30px;
+}
+section .detalle-producto .detalle-informacion button {
+  background: #004643;
+  border: none;
+  color: white;
+  width: 180px;
+  padding: 10px 0;
+}
+section .detalle-producto .detalle-informacion button:hover {
+  background: #002d2b;
+}
