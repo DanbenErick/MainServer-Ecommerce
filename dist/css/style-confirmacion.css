@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+nav {
+  background: #004643;
+  font-family: Poppins;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 0px 243px;
+}
+nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li a:hover {
+  background: #003c39;
+}
+nav ul li img {
+  margin-right: 10px;
+}
+nav img {
+  width: 23px;
+  height: 23px;
+}
+
+h2 {
+  color: #004643;
+  padding-bottom: 20px;
+}
+
+h2::after {
+  content: "";
+  width: 200px;
+  height: 10px;
+  display: block;
+  background: #004643;
+  border-radius: 100px;
+}
+
+header, section {
+  padding: 0px 80px;
+}
+
+header {
+  padding-top: 80px;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+section .informacion, section .imagen {
+  width: 100%;
+}
+section .informacion-cliente {
+  padding-bottom: 15px;
+}
+section img {
+  width: 100%;
+}

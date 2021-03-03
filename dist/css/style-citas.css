@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+nav {
+  background: #004643;
+  font-family: Poppins;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 0px 243px;
+}
+nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul li a:hover {
+  background: #003c39;
+}
+nav ul li img {
+  margin-right: 10px;
+}
+nav img {
+  width: 23px;
+  height: 23px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+header h1 {
+  width: 70%;
+  padding: 80px 0px;
+  font-family: Poppins;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+section > div {
+  width: 70%;
+}
+
+section {
+  padding-bottom: 40px;
+}
+section label, section input {
+  width: 100%;
+  display: block;
+}
+section label {
+  padding-bottom: 10px;
+}
+section input {
+  font-size: 14px;
+  padding: 5px 8px;
+}
+section button {
+  background: #004643;
+  color: white;
+  width: 30%;
+  border: none;
+  font-size: 14px;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+section button:hover {
+  cursor: pointer;
+  background: #001312;
+}
+section .input-group {
+  padding-bottom: 10px;
+}
