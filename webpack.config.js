@@ -6,6 +6,7 @@ const config = {
       filename: '[name].js',
       path: path.join(__dirname, 'dist/js')
     },
+    mode: 'development',
     devServer: {
       // open: true,
       hot: true,
@@ -25,6 +26,9 @@ const config = {
             ]
           }
       ]
+    },
+    devServer: {
+      historyApiFallback: true
     }
 }
 

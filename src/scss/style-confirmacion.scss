@@ -13,13 +13,13 @@ h2::after {
   background: $color-primary;
   border-radius: 100px;
 }
-header, section {
+header.header-confirmacion, section.confirmacion {
   padding: 0px 80px;
 }
-header {
+header.header-confirmacion {
   padding-top: 80px;
 }
-section {
+section.confirmacion {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;

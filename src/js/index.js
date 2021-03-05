@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './App.jsx'
 
-const Helo = () => <h1>Hola Mundo Prueba</h1>
-
-ReactDOM.render(<Helo />, document.querySelector("#app"))
+ReactDOM.render(<App />, document.querySelector("#app"))
 
