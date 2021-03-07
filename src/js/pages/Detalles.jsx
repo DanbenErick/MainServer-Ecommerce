@@ -14,7 +14,7 @@ const Detalles = () => {
 
   const addToCart = () => {
     context.addCarrito(productoParaCarrito)
-    console.log(productoParaCarrito)
+    // console.log(productoParaCarrito)
   }
 
   return (

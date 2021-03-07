@@ -2,7 +2,11 @@ import React from 'react'
 
 const StoreContext = React.createContext({
   carrito: [],
-  addCarrito: (producto) => { }
+  cliente: {},
+  addCarrito: (producto) => { },
+  removeCarrito: (index) => {},
+  addCliente: (cliente) => {},
+  removeCliente : () =>{}
 })
 
 export default StoreContext

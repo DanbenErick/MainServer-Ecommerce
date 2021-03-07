@@ -1,72 +1,59 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import Header from '../components/Header.jsx'
 import '../../../dist/css/style-carrito.css'
-
+import StoreContext from '../context'
 const Carrito = () => {
+  const context = useContext(StoreContext)
+  const [ precioTotal, setPrecioTotal ] = useState(0)
+  const [carrito, setCarrito] = useState(context.carrito)
+  useEffect(() => {
+    let sumatoria = 0
+    carrito.map(item => {
+      console.log(item.price)
+      sumatoria = parseInt(item.price) + parseInt(sumatoria)
+      setPrecioTotal(sumatoria)
+    })
+    console.log("Estado", carrito)
+  })
+
+  const removeToCart = (index) => {
+    console.log("estado", carrito)
+    context.removeCarrito(index)
+    setCarrito(context.carrito)
+  }
+
   return (
     <>
       <Header title="Carrito"/>
       <section className="carrito">
         <div className="productos">
-          <article className="producto">
-            <div className="producto-imagen">
-              <img src="https://image.freepik.com/foto-gratis/grabacion-estereo-inalambrico-icono-humana_1232-3551.jpg" alt="" />
-            </div>
-            <div className="producto-informacion">
-              <h2>Telefono Celular</h2>
-              <p>15 * S/. 10.00</p>
-              <p>Es un celular huawei de ultima generacion....</p>
-            </div>
-            <div className="producto-boton">
-              <img src="dist/img/cancel.svg" alt="" />
-            </div>
-          </article>
-          <article className="producto">
-            <div className="producto-imagen">
-              <img src="https://image.freepik.com/foto-gratis/grabacion-estereo-inalambrico-icono-humana_1232-3551.jpg" alt="" />
-            </div>
-            <div className="producto-informacion">
-              <h2>Telefono Celular</h2>
-              <p>15 * S/. 10.00</p>
-              <p>Es un celular huawei de ultima generacion....</p>
-            </div>
-            <div className="producto-boton">
-              <img src="dist/img/cancel.svg" alt="" />
-            </div>
-          </article>
-          <article className="producto">
-            <div className="producto-imagen">
-              <img src="https://image.freepik.com/foto-gratis/grabacion-estereo-inalambrico-icono-humana_1232-3551.jpg" alt="" />
-            </div>
-            <div className="producto-informacion">
-              <h2>Telefono Celular</h2>
-              <p>15 * S/. 10.00</p>
-              <p>Es un celular huawei de ultima generacion....</p>
-            </div>
-            <div className="producto-boton">
-              <img src="dist/img/cancel.svg" alt="" />
-            </div>
-          </article>
-          <article className="producto">
-            <div className="producto-imagen">
-              <img src="https://image.freepik.com/foto-gratis/grabacion-estereo-inalambrico-icono-humana_1232-3551.jpg" alt="" />
-            </div>
-            <div className="producto-informacion">
-              <h2>Telefono Celular</h2>
-              <p>15 * S/. 10.00</p>
-              <p>Es un celular huawei de ultima generacion....</p>
-            </div>
-            <div className="producto-boton">
-              <img src="dist/img/cancel.svg" alt="" />
-            </div>
-          </article>
+          {carrito.map((itemCarrito, index) => (
+            <article className="producto" key={index}>
+              <div className="producto-imagen">
+                <img src={itemCarrito.image} alt="" />
+              </div>
+              <div className="producto-informacion">
+                <h2>{itemCarrito.name}</h2>
+                <p>S/. {itemCarrito.price}</p>
+                <p>{itemCarrito.description}</p>
+              </div>
+              <div className="producto-boton">
+                <img src="dist/img/cancel.svg" alt="" onClick={() => removeToCart(index)}/>
+              </div>
+            </article>
+          ))}
           <div className="total">
             <div className="total-informacion">
               <h2>Subtotal</h2>
-              <p>S/. 120.00</p>
+              <p>S/. {precioTotal}</p>
             </div>
-            <button>Siguiente Paso</button>
+            <button type="button">
+              <Link to="/carrito/informacion" style={{ color: 'white', textDecoration: 'none' }}>
+                Siguiente Paso
+              </Link>
+            </button>
           </div>
         </div>
       </section>

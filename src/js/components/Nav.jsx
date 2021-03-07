@@ -11,7 +11,7 @@ const Nav = () => {
           <li>
             <Link to="/"><img src="dist/img/box.svg" alt="" /> Productos</Link>
             <Link to="/citas"><img src="dist/img/cita.svg" alt="" /> Citas</Link>
-            <Link to="/carrito"><img src="dist/img/bag.svg" alt="" /> {context.carrito.length + 1}</Link>
+            <Link to="/carrito"><img src="dist/img/bag.svg" alt="" /> {context.carrito.length ?? ''}</Link>
           </li>
         </ul>
       </nav>

@@ -11,6 +11,8 @@ import Citas from './pages/Citas.jsx'
 import Carrito from './pages/Carrito.jsx'
 import Confirmacion from './pages/Confirmacion.jsx'
 import Detalles from './pages/Detalles.jsx'
+import InformacionEnvio from './pages/InformacionEnvio.jsx'
+import Pago from './pages/Pago.jsx'
 
 // Data Inicial
 import data from '../database/data'
@@ -21,13 +23,25 @@ import StoreContext from './context'
 const App = () => {
 
   const [carrito, setCarrito] = useState([])
+  const [cliente, setCliente] = useState({})
 
   const addCarrito = (producto) => {
     setCarrito(prevCarrito => [...prevCarrito, producto])
   }
 
+  const addCliente = (cliente) => {
+    setCliente(prevCliente => [...prevCliente, cliente])
+  }
+
+  const removeCarrito = (index) => {
+    let carritos = carrito
+    carritos.splice(index, 1)
+    setCarrito(carritos)
+    console.log(carritos)
+  }
+
   return (
-    <StoreContext.Provider value={{carrito, addCarrito}}>
+    <StoreContext.Provider value={{carrito, cliente, addCarrito, removeCarrito, addCliente}}>
       <React.Fragment>
           <HashRouter>
             <Nav />
@@ -41,11 +55,17 @@ const App = () => {
               <Route path="/carrito" exact>
                 <Carrito />
               </Route>
+              <Route path="/carrito/informacion" exact>
+                <InformacionEnvio />
+              </Route>
+              <Route path="/carrito/pagar" exact>
+                <Pago />
+              </Route>
+              <Route path="/carrito/confirmacion" exact>
+                <Confirmacion />
+              </Route>
               <Route path="/citas" exact>
                 <Citas />
-              </Route>
-              <Route path="/confirmacion" exact>
-                <Confirmacion />
               </Route>
               <Route path="/" exact>
                 <Productos productos={data}/>

@@ -4,6 +4,10 @@
 @import "componenets/section";
 
 section.galeria-productos {
+  a {
+    text-decoration: none;
+    color: black;
+  }
   .productos {
     display: grid;
     grid-gap: 50px;

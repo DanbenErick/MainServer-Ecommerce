@@ -1,11 +1,11 @@
 @import "componenets/basic";
 @import "componenets/nav";
 
-h2 {
+header.header-confirmacion h2, section.confirmacion h2 {
   color: $color-primary;
   padding-bottom: 20px;
 }
-h2::after {
+header.header-confirmacion h2::after, section.confirmacion h2::after {
   content: '';
   width: 200px;
   height: 10px;
