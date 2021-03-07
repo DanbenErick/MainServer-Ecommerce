@@ -26,13 +26,9 @@ const InformacionEnvio = () => {
     }
     
     context.addCliente(cliente)
-
-    history.push('/carrito/pagar')
+    console.log("Informacion Envio", context)
+    history.push('/carrito/confirmacion')
   }
-
-    const testButton = _ => {
-      console.log(nombreCompleto.current.value)
-    }
 
   return (
     <>
@@ -61,7 +57,7 @@ const InformacionEnvio = () => {
                 <input ref={dni} type="text"/>
             </div>
             <div className="input-group">
-              <button onClick={goToPagar}>Ir a Pagar</button>
+              <button type="button" onClick={goToPagar}>Ir a Pagar</button>
             </div>
           </form>
         </div>

@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../../../dist/css/style-confirmacion.css'
+
+import StoreContext from '../context'
 const Confirmacion = () => {
+  // const [ cliente, setCliente ] = useState({})
+  const { cliente } = useContext(StoreContext)
+  // console.log("Confirmacion",context)
+
+  // useEffect(() => {
+  //   setCliente({
+  //     name: context.cliente.name || '',
+  //     email: context.cliente.email || '',
+  //     phone: context.cliente.phone || '',
+  //     address: context.cliente.address || '',
+  //     dni: context.cliente.dni || '',
+  //   })
+  // })
+
   return (
     <>
       <header className="header-confirmacion">
@@ -12,23 +28,23 @@ const Confirmacion = () => {
           <h2>Datos de Envio</h2>
           <div className="informacion-cliente">
             <h3>Nombre y Apellidos</h3>
-            <p>Sharon Araceli Campos Ricapa</p>
+            <p>{cliente.name}</p>
           </div>
           <div className="informacion-cliente">
             <h3>Correo Electronico</h3>
-            <p>sharon@gmail.com</p>
+            <p>{cliente.email}</p>
           </div>
           <div className="informacion-cliente">
             <h3>Telefono</h3>
-            <p>999 999 998</p>
+            <p>{cliente.phone}</p>
           </div>
           <div className="informacion-cliente">
             <h3>Direccion</h3>
-            <p>Jr San Cristobal - Cerro de Pasco - Pasco</p>
+            <p>{cliente.address}</p>
           </div>
           <div className="informacion-cliente">
             <h3>DNI</h3>
-            <p>13213212</p>
+            <p>{cliente.dni}</p>
           </div>
         </div>
         <div className="imagen">

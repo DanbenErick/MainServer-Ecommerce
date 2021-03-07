@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { HashRouter, Switch,Route,Link, BrowserRouter, useParams} from "react-router-dom";
 
 //Componentes
@@ -25,19 +25,23 @@ const App = () => {
   const [carrito, setCarrito] = useState([])
   const [cliente, setCliente] = useState({})
 
+  const context = useContext(StoreContext)
+
   const addCarrito = (producto) => {
     setCarrito(prevCarrito => [...prevCarrito, producto])
   }
 
   const addCliente = (cliente) => {
-    setCliente(prevCliente => [...prevCliente, cliente])
+    context.cliente = cliente
+    console.log("ADD Cliente", context)
+    setCliente(prevCliente => cliente)
   }
 
   const removeCarrito = (index) => {
     let carritos = carrito
     carritos.splice(index, 1)
     setCarrito(carritos)
-    console.log(carritos)
+    // console.log(carritos)
   }
 
   return (
