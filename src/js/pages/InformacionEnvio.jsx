@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Header from '../components/Header.jsx'
 import "../../../dist/css/style-datos-personales.css"
 import StoreContext from '../context'
+import axios from 'axios'
 
 const InformacionEnvio = () => {
   
@@ -24,6 +25,7 @@ const InformacionEnvio = () => {
       address: direccion.current.value,
       dni: dni.current.value,
     }
+    
     
     context.addCliente(cliente)
     console.log("Informacion Envio", context)
@@ -67,3 +69,21 @@ const InformacionEnvio = () => {
 }
 
 export default InformacionEnvio
+
+
+// let formData = new FormData();    //formdata object
+
+// formData.append('name', 'ABC');   //append the values with key, value pair
+// formData.append('age', 20);
+
+// const config = {     
+//     headers: { 'content-type': 'multipart/form-data' }
+// }
+
+// axios.post(url, formData, config)
+//     .then(response => {
+//         console.log(response);
+//     })
+//     .catch(error => {
+//         console.log(error);
+//     });
