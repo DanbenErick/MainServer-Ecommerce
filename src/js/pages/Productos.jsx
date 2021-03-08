@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../../dist/css/style-index.css';
 import Header from '../components/Header.jsx'
 import { Link } from 'react-router-dom'
+import data from '../../database/data';
 
 
-const Productos = ({ productos }) => {
+const Productos = (props) => {
+  const [ productos, setProductos ] = useState([])
+
+  useEffect(() => { 
+    props.productos.then( res => {
+      setProductos(res)
+    })
+  }, [])
   return (
     <>
     <Header title="Productos" />
@@ -15,11 +23,11 @@ const Productos = ({ productos }) => {
             <Link to={`/productos/detalles/${producto.id}`} key={producto.id}>
               <article className="producto">
                 <div className="producto_imagen">
-                  <img src={producto.image} alt="" />
+                  <img src={"http://localhost:1337" + producto.imagen[0].url} alt="" />
                 </div>
                 <div className="informacion_producto">
-                  <p className="informacion_producto_titulo">{producto.name}</p>
-                  <p className="precio_producto_titulo">S/. {producto.price}</p>
+                  <p className="informacion_producto_titulo">{producto.nombre}</p>
+                  <p className="precio_producto_titulo">S/. {producto.precio}</p>
                 </div>
               </article>
             </Link>

@@ -13,6 +13,7 @@ import Confirmacion from './pages/Confirmacion.jsx'
 import Detalles from './pages/Detalles.jsx'
 import InformacionEnvio from './pages/InformacionEnvio.jsx'
 import Pago from './pages/Pago.jsx'
+import RegistrarProducto from './pages/RegistrarProducto.jsx';
 
 // Data Inicial
 import data from '../database/data'
@@ -55,6 +56,11 @@ const App = () => {
               </Route>
               <Route path="/productos/detalles/:idParam" exact >
                 <Detalles />
+              </Route>
+              <Route path="/usuario">
+              </Route>
+              <Route path="/usuario/registrar-producto">
+                <RegistrarProducto />
               </Route>
               <Route path="/carrito" exact>
                 <Carrito />
