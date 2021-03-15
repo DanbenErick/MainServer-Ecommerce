@@ -29,8 +29,15 @@ const Detalles = () => {
   },[])
 
   const addToCart = () => {
+    productoParaCarrito = {
+      id: item.data.id,
+      name: item.data.nombre,
+      image: item.data.imagen[0].url,
+      price: item.data.precio,
+      description: item.data.description
+    }
+    console.log("Detalles", productoParaCarrito)
     context.addCarrito(productoParaCarrito)
-    // console.log(productoParaCarrito)
   }
 
   return (

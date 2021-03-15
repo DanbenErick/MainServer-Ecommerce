@@ -14,6 +14,7 @@ import Detalles from './pages/Detalles.jsx'
 import InformacionEnvio from './pages/InformacionEnvio.jsx'
 import Pago from './pages/Pago.jsx'
 import RegistrarProducto from './pages/RegistrarProducto.jsx';
+import Empleado from './pages/Empleado.jsx'
 
 // Data Inicial
 import data from '../database/data'
@@ -57,9 +58,10 @@ const App = () => {
               <Route path="/productos/detalles/:idParam" exact >
                 <Detalles />
               </Route>
-              <Route path="/usuario">
+              <Route path="/empleado" exact>
+                <Empleado />
               </Route>
-              <Route path="/usuario/registrar-producto">
+              <Route path="/empleado/registrar-producto" exact>
                 <RegistrarProducto />
               </Route>
               <Route path="/carrito" exact>
@@ -79,6 +81,9 @@ const App = () => {
               </Route>
               <Route path="/" exact>
                 <Productos productos={data}/>
+              </Route>
+              <Route>
+                <h1>No existe esta pagina</h1>
               </Route>
             </Switch>
           </HashRouter>

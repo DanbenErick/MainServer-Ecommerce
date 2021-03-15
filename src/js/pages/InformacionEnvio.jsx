@@ -25,7 +25,15 @@ const InformacionEnvio = () => {
       address: direccion.current.value,
       dni: dni.current.value,
     }
-    
+
+    axios.post('http://localhost:1337/clientes', {
+      nombre_completo: cliente.name,
+      correo: cliente.email,
+      telefono: cliente.phone,
+      direccion: cliente.address,
+      dni: cliente.dni,
+      pedidos: context.carrito
+    })
     
     context.addCliente(cliente)
     console.log("Informacion Envio", context)

@@ -8,6 +8,7 @@ const Carrito = () => {
   const context = useContext(StoreContext)
   const [ precioTotal, setPrecioTotal ] = useState(0)
   const [carrito, setCarrito] = useState(context.carrito)
+
   useEffect(() => {
     let sumatoria = 0
     carrito.map(item => {
@@ -32,7 +33,7 @@ const Carrito = () => {
           {carrito.map((itemCarrito, index) => (
             <article className="producto" key={index}>
               <div className="producto-imagen">
-                <img src={itemCarrito.image} alt="" />
+                <img src={'http://localhost:1337' + itemCarrito.image} alt="" />
               </div>
               <div className="producto-informacion">
                 <h2>{itemCarrito.name}</h2>
