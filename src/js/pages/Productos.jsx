@@ -7,7 +7,6 @@ import data from '../../database/data';
 
 const Productos = (props) => {
   const [ productos, setProductos ] = useState([])
-
   useEffect(() => { 
     props.productos.then( res => {
       setProductos(res)
@@ -23,7 +22,7 @@ const Productos = (props) => {
             <Link to={`/productos/detalles/${producto.id}`} key={producto.id}>
               <article className="producto">
                 <div className="producto_imagen">
-                  <img src={"http://localhost:1337" + producto.imagen[0].url} alt="" />
+                  <img src={"http://localhost:1337" + producto.imagen} alt="" />
                 </div>
                 <div className="informacion_producto">
                   <p className="informacion_producto_titulo">{producto.nombre}</p>

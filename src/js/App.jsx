@@ -3,7 +3,6 @@ import { HashRouter, Switch,Route,Link, BrowserRouter, useParams} from "react-ro
 
 //Componentes
 import Nav from './components/Nav.jsx'
-import Header from './components/Header.jsx'
 
 //Paginas
 import Productos from './pages/Productos.jsx'
@@ -15,6 +14,10 @@ import InformacionEnvio from './pages/InformacionEnvio.jsx'
 import Pago from './pages/Pago.jsx'
 import RegistrarProducto from './pages/RegistrarProducto.jsx';
 import Empleado from './pages/Empleado.jsx'
+import ListaCitas from './pages/ListaCitas.jsx'
+import Perfil from './pages/Perfil.jsx'
+import Pedidos from './pages/Pedidos.jsx'
+import PedidoDetalle from './pages/PedidoDetalle.jsx'
 
 // Data Inicial
 import data from '../database/data'
@@ -26,6 +29,7 @@ const App = () => {
 
   const [carrito, setCarrito] = useState([])
   const [cliente, setCliente] = useState({})
+  const [token, setToken] = useState(null)
 
   const context = useContext(StoreContext)
 
@@ -39,6 +43,12 @@ const App = () => {
     setCliente(prevCliente => cliente)
   }
 
+  const addToken = (token) => {
+    context.token = token
+    console.log("TOKEN AGREGADO")
+    setToken(prevToken => token)
+  }
+
   const removeCarrito = (index) => {
     let carritos = carrito
     carritos.splice(index, 1)
@@ -47,7 +57,7 @@ const App = () => {
   }
 
   return (
-    <StoreContext.Provider value={{carrito, cliente, addCarrito, removeCarrito, addCliente}}>
+    <StoreContext.Provider value={{carrito, cliente, addCarrito, removeCarrito, addCliente, token, addToken}}>
       <React.Fragment>
           <HashRouter>
             <Nav />
@@ -61,8 +71,20 @@ const App = () => {
               <Route path="/empleado" exact>
                 <Empleado />
               </Route>
+              <Route path="/empleado/perfil" exact>
+                <Perfil />
+              </Route>
               <Route path="/empleado/registrar-producto" exact>
                 <RegistrarProducto />
+              </Route>
+              <Route path="/empleado/pedidos" exact>
+                <Pedidos />
+              </Route>
+              <Route path="/empleado/pedidos/:id" exact>
+                <PedidoDetalle />
+              </Route>
+              <Route path="/empleado/lista-citas" exact>
+                <ListaCitas />
               </Route>
               <Route path="/carrito" exact>
                 <Carrito />

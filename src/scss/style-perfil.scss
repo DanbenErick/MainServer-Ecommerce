@@ -1,0 +1,25 @@
+@import "componenets/basic";
+@import "componenets/nav";
+@import "componenets/header";
+
+section.section-perfil {
+  // width: 100%;
+  .links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    .link {
+      width: 100%;
+      background: $color-primary;
+      color: white;
+      border: none;
+      padding: 10px 30px;
+      margin: 10px 0;
+      cursor: pointer;
+      &:hover {
+        background: darken($color-primary, 4);
+      }
+    }
+  }
+}

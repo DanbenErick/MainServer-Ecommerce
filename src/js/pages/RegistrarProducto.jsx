@@ -1,32 +1,88 @@
-import React from 'react'
+import React, { useContext, useRef, useState } from 'react'
 
 import Header from '../components/Header.jsx'
 
+import axios from 'axios'
+import StoreContext from '../context'
+
 const RegistrarProducto = () => {
+
+  const context = useContext(StoreContext)
+  const [ file, setFile ] = useState({})
+
+  const form = useRef(null)
+  
+  const sendData = () => {
+    const formData = new FormData(form.current)
+    axios.post('http://localhost:1337/upload', formData, {
+      headers: {
+        Authorization: `Bearer ${context.token}`
+      }
+    })
+
+    .then(res => {
+      formData.delete('files')
+      console.log("URL de Imagen", res.data[0].url)
+      formData.set('imagen', res.data[0].url)
+      axios.post('http://localhost:1337/productos', {
+        nombre: formData.get('nombre'),
+        descripcion: formData.get('descripcion'),
+        precio: formData.get('precio'),
+        imagen: formData.get('imagen'),
+      }, {
+        headers: {
+          Authorization: `Bearer ${context.token}`
+        }
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+    console.log(formData.get('nombre'))
+    console.log(formData.get('descripcion'))
+    console.log(formData.get('precio'))
+    console.log(formData.get('imagen'))
+  }
+
   return (
     <>
       <Header title="Registrar Producto" />
       <section className="registrar-producto">
         <div className="contenedor-form">
-          <form>
+          <form ref={form}>
             <div className="input-group">
               <label>Nombre del Producto</label>
-              <input type="text" />
+              <input type="text" name="nombre"/>
             </div>
             <div className="input-group">
               <label>Descripcion del Producto</label>
-              <input type="text" />
+              <input type="text" name="descripcion"/>
             </div>
             <div className="input-group">
               <label>Precio del Producto</label>
-              <input type="text" />
+              <input type="text" name="precio"/>
             </div>
             <div className="input-group">
               <label>Imagen del Producto</label>
-              <input type="file" />
+              <input
+                name="files"
+                type="file"
+                accept="image/*"
+                onChange= {e => {
+                  setFile(e.target.files[0])
+                }}  
+              />
             </div>
             <div className="input-group">
-              <button>Guardar Producto</button>
+              <button type="button" onClick={sendData}>Guardar Producto</button>
             </div>
           </form>
         </div>

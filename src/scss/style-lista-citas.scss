@@ -1,0 +1,34 @@
+@import "componenets/basic";
+@import "componenets/nav";
+@import "componenets/header";
+
+section.section-lista-pedidos {
+  .container-table {
+    width: 70%;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      thead {
+        tr {
+          background: $color-primary;
+          th {
+            color: white;
+            padding: 10px 0;
+          }
+        }
+        
+      }
+      tbody {
+        tr {
+          background: rgba($color-primary, .4);
+          td {
+            text-align: center;
+            text-decoration: center;
+            padding: 10px 0;
+            
+          }
+        }
+      }
+    }
+  }
+}

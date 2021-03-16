@@ -32,7 +32,7 @@ const Detalles = () => {
     productoParaCarrito = {
       id: item.data.id,
       name: item.data.nombre,
-      image: item.data.imagen[0].url,
+      image: item.data.imagen,
       price: item.data.precio,
       description: item.data.description
     }
@@ -45,11 +45,10 @@ const Detalles = () => {
       <Header />
       {
         item.ok ?
-        // <h1>Si hay </h1>
         <section className="detalles" key={item.data.id}>
           <div className="detalle-producto">
             <div className="detalle-imagen">
-              <img src={'http://localhost:1337' + item.data.imagen[0].url} alt="" />
+              <img src={'http://localhost:1337' + item.data.imagen} alt="" />
             </div>
             <div className="detalle-informacion">
               <h2>{item.data.nombre}</h2>

@@ -71,15 +71,15 @@ const Citas = () => {
             </div>
             <div className="input-group">
               <label>Correo Electronico</label>
-              <input type="text" ref={correo}/>
+              <input type="email" ref={correo}/>
             </div>
             <div className="input-group">
               <label>Telefono</label>
-              <input type="text" ref={telefono}/>
+              <input type="number" ref={telefono}/>
             </div>
             <div className="input-group">
-              <label>Problema con tu equipo?</label>
-              <input type="text" ref={problema}/>
+              <label>Problema con tu equipo? max(30 caracteres)</label>
+              <input type="text" ref={problema} maxLength="30" />
             </div>
             <div className="input-group">
               <label>Marca del Producto</label>
