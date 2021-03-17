@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "citas",
+  "info": {
+    "name": "Citas"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre_completo": {
+      "type": "string"
+    },
+    "correo": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "problema": {
+      "type": "string"
+    },
+    "marca_producto": {
+      "type": "string"
+    }
+  }
+}

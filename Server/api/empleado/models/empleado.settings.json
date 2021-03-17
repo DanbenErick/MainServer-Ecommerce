@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "empleados",
+  "info": {
+    "name": "Empleado"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre_completo": {
+      "type": "string"
+    },
+    "usuario": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "password": {
+      "type": "password"
+    }
+  }
+}
