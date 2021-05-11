@@ -17,20 +17,25 @@ const Productos = (props) => {
     <Header title="Productos" />
       <section className="galeria-productos">
         <div className="productos">
-
-          {productos.map((producto) => (
-            <Link to={`/productos/detalles/${producto.id}`} key={producto.id}>
-              <article className="producto">
-                <div className="producto_imagen">
-                  <img src={"http://localhost:1337" + producto.imagen} alt="" />
-                </div>
-                <div className="informacion_producto">
-                  <p className="informacion_producto_titulo">{producto.nombre}</p>
-                  <p className="precio_producto_titulo">S/. {producto.precio}</p>
-                </div>
-              </article>
-            </Link>
-          ))}
+          {
+            productos != ""
+            ?
+              (productos.map((producto) => (
+                <Link to={`/productos/detalles/${producto.id}`} key={producto.id}>
+                  <article className="producto">
+                    <div className="producto_imagen">
+                      <img src={"http://localhost:1337" + producto.imagen} alt="" />
+                    </div>
+                    <div className="informacion_producto">
+                      <p className="informacion_producto_titulo">{producto.nombre}</p>
+                      <p className="precio_producto_titulo">S/. {producto.precio}</p>
+                    </div>
+                  </article>
+                </Link>
+              )))
+            :
+            (<span>No encontramos productos</span>)
+          }
         </div>
       </section>
     </>
