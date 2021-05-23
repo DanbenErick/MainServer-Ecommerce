@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../components/Header.jsx'
 
-import "../../../dist/css/style-datos-personales.css"
+// import "../../../dist/css/style-datos-personales.css"
 import StoreContext from '../context'
 const Empleado = () => {
 

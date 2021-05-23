@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import Header from '../components/Header.jsx'
-import '../../../dist/css/style-carrito.css'
 import StoreContext from '../context'
 const Carrito = () => {
   const context = useContext(StoreContext)

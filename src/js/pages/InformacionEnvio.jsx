@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../components/Header.jsx'
-import "../../../dist/css/style-datos-personales.css"
+// import "../../../dist/css/style-datos-personales.css"
 import StoreContext from '../context'
 import axios from 'axios'
 
@@ -32,7 +32,8 @@ const InformacionEnvio = () => {
       telefono: cliente.phone,
       direccion: cliente.address,
       dni: cliente.dni,
-      pedidos: context.carrito
+      pedidos: context.carrito,
+      estado_pedido: 'Pendiente'
     })
     
     context.addCliente(cliente)

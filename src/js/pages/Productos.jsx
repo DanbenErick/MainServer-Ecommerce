@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import '../../../dist/css/style-index.css';
 import Header from '../components/Header.jsx'
 import { Link } from 'react-router-dom'
-import data from '../../database/data';
-
 
 const Productos = (props) => {
   const [ productos, setProductos ] = useState([])

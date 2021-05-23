@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../components/Header.jsx'
 
-import "../../../dist/css/style-perfil.css"
+// import "../../../dist/css/style-perfil.css"
 
 const Perfil = () => {
 

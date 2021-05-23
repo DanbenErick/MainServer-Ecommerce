@@ -8,7 +8,7 @@ const config = {
     },
     mode: 'development',
     devServer: {
-      // open: true,
+      open: true,
       hot: true,
       port : 9000
     },

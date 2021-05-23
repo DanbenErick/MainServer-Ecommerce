@@ -3,7 +3,8 @@
 @import "componenets/header";
 
 section.section-perfil {
-  // width: 100%;
+  display: flex;
+  justify-content: center;
   .links {
     list-style: none;
     display: flex;
@@ -19,6 +20,12 @@ section.section-perfil {
       cursor: pointer;
       &:hover {
         background: darken($color-primary, 4);
+      }
+    }
+    @media (max-width: 480px) {
+      width: 90%;
+      .link {
+        text-align: center;
       }
     }
   }

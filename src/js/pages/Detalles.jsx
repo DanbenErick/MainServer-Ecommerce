@@ -3,7 +3,7 @@ import axios from 'axios'
 import Header from '../components/Header.jsx'
 import { useParams } from 'react-router-dom'
 
-import '../../../dist/css/style-detalle-producto.css'
+// import '../../../dist/css/style-detalle-producto.css'
 
 import data from '../../database/data'
 import StoreContext from '../context'

@@ -4,6 +4,8 @@ section {
   justify-content: center;
   & > div {
     width: 70%;
-
+    @media (max-width: 480px) {
+      width: 90%;
+    }
   }
 }

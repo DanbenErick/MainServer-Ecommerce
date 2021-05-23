@@ -20,11 +20,26 @@ section {
         background: $color-primary;
         border: none;
         color: white;
-        width: 180px;
-        padding: 10px 0;
+        // width: 180px;
+        padding: 10px 50px;
         &:hover {
           background: darken($color-primary, 5);
         }
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    .detalle-producto {
+      grid-template-columns: 1fr;
+    }
+    h2, p {
+      text-align: center;
+    }
+    
+    .detalle-informacion {
+      button {
+        width: 100%;
+        padding: 10px 0;
       }
     }
   }

@@ -1,0 +1,16 @@
+@import "componenets/basic";
+@import "componenets/nav";
+@import "componenets/header";
+
+section.registrar-producto {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+  @import "componenets/form";
+  .contenedor-form {
+    width: 70%;
+    @media (max-width: 480px) {
+      width: 95%;
+    }
+  }
+}

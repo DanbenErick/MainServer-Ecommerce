@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react'
 import Header from '../components/Header.jsx'
 import Modal from '../components/Modal.jsx'
-import "../../../dist/css/style-citas.css"
-
+import { Helmet } from 'react-helmet'
 import axios from 'axios'
 
 const Citas = () => {
@@ -18,29 +17,15 @@ const Citas = () => {
   const problema = useRef(null)
   const marca_producto = useRef(null)
   const saveCita = () => {
-    // const formData = new FormData()
-    // formData.append('nombre_completo', nombreCompleto)
-    // formData.append('correo', correo)
-    // formData.append('telefono', telefono)
-    // formData.append('problema', problema)
-    // const config = {
-    //   headers: {
-    //     'content-type': 'multipart/form-data'
-    //   }
-    // }
-    // const config = {
-    //   headers: {
-    //     'content-type': 'x-www-form-urlencoded'
-    //   }
-    // }
     const data = {
       nombre_completo: nombre_completo.current.value,
       correo: correo.current.value,
       telefono: telefono.current.value,
       problema : problema.current.value,
-      marca_producto: marca_producto.current.value
+      marca_producto: marca_producto.current.value,
     }
-    console.log("DATOS", data)
+    data.estado_cita = "Pendiente"
+    console.log("DATOSSSs (2)", data)
     axios.post('http://localhost:1337/citas', data)
       .then(response => {
         setModal({
@@ -61,6 +46,11 @@ const Citas = () => {
 
   return (
     <>
+      <Helmet>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../../../dist/css/style-citas.css" />
+        <title>Citas | Tienda | Main Server</title>
+      </Helmet>
       <Header title="Citas" />
       <section className="citas">
         <div className="contenedor-form">

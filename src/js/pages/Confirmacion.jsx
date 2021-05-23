@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import '../../../dist/css/style-confirmacion.css'
+// import '../../../dist/css/style-confirmacion.css'
 
 import StoreContext from '../context'
 const Confirmacion = () => {

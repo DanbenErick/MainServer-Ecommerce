@@ -35,21 +35,19 @@ const RegistrarProducto = () => {
         }
       })
       .then(res => {
-        console.log(res)
+        alert("Producto creado")
+        formData.set('nombre', '')
+        formData.set('descripcion', '')
+        formData.set('precio', '')
+        formData.set('imagen', '')
       })
       .catch(err => {
         console.log(err)
       })
-      console.log(res)
     })
     .catch(err => {
       console.log(err)
     })
-
-    console.log(formData.get('nombre'))
-    console.log(formData.get('descripcion'))
-    console.log(formData.get('precio'))
-    console.log(formData.get('imagen'))
   }
 
   return (
