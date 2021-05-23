@@ -3,7 +3,7 @@ import Header from '../components/Header.jsx'
 import Modal from '../components/Modal.jsx'
 import { Helmet } from 'react-helmet'
 import axios from 'axios'
-
+import PropTypes from 'prop-types'
 const Citas = () => {
 
   const [ modal, setModal ] = useState({

@@ -11,6 +11,10 @@ const RegistrarProducto = () => {
   const [ file, setFile ] = useState({})
 
   const form = useRef(null)
+  const nombre = useRef(null)
+  const descripcion = useRef(null)
+  const precio = useRef(null)
+  const imagen = useRef(null)
   
   const sendData = () => {
     const formData = new FormData(form.current)
@@ -36,10 +40,10 @@ const RegistrarProducto = () => {
       })
       .then(res => {
         alert("Producto creado")
-        formData.set('nombre', '')
-        formData.set('descripcion', '')
-        formData.set('precio', '')
-        formData.set('imagen', '')
+        nombre.current = ''
+        descripcion.current = ''
+        precio.current = ''
+        imagen.current = ''
       })
       .catch(err => {
         console.log(err)
@@ -58,21 +62,22 @@ const RegistrarProducto = () => {
           <form ref={form}>
             <div className="input-group">
               <label>Nombre del Producto</label>
-              <input type="text" name="nombre"/>
+              <input type="text" name="nombre" ref={nombre} />
             </div>
             <div className="input-group">
               <label>Descripcion del Producto</label>
-              <input type="text" name="descripcion"/>
+              <input type="text" name="descripcion" ref={descripcion} />
             </div>
             <div className="input-group">
               <label>Precio del Producto</label>
-              <input type="text" name="precio"/>
+              <input type="text" name="precio" ref={precio} />
             </div>
             <div className="input-group">
               <label>Imagen del Producto</label>
               <input
                 name="files"
                 type="file"
+                ref={imagen}
                 accept="image/*"
                 onChange= {e => {
                   setFile(e.target.files[0])
