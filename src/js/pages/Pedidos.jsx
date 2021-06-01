@@ -7,7 +7,7 @@ import Header from '../components/Header.jsx'
 import StoreContext from '../context'
 const Pedidos = () => {
 
-  const strapiAPI = 'https://cms-metodos.herokuapp.com/'
+  const strapiAPI = 'https://cms-metodos.herokuapp.com'
   const context = useContext(StoreContext)
   const history = useHistory()
   const [pedidos, setPedidos] = useState({

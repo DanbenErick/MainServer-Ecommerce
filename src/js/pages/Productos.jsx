@@ -21,7 +21,7 @@ const Productos = (props) => {
                 <Link to={`/productos/detalles/${producto.id}`} key={producto.id}>
                   <article className="producto">
                     <div className="producto_imagen">
-                      <img src={"https://cms-metodos.herokuapp.com/" + producto.imagen} alt="" />
+                      <img src={"https://cms-metodos.herokuapp.com" + producto.imagen} alt="" />
                     </div>
                     <div className="informacion_producto">
                       <p className="informacion_producto_titulo">{producto.nombre}</p>

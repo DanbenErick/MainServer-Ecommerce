@@ -19,7 +19,7 @@ const Empleado = () => {
 
   const sendEmpleado = () => {
     if(usuario.current.value != "" && password.current.value != "") {
-      axios.post('https://cms-metodos.herokuapp.com//auth/local', {
+      axios.post('https://cms-metodos.herokuapp.com/auth/local', {
         identifier: usuario.current.value,
         password: password.current.value
       })

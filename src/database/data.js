@@ -3,7 +3,7 @@ import axios from 'axios'
 
 async function getProducts() {
   try {
-    const response = await axios.get('https://cms-metodos.herokuapp.com//productos')
+    const response = await axios.get('https://cms-metodos.herokuapp.com/productos')
     console.log(response.data)
     return response.data
   }

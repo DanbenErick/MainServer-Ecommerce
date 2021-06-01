@@ -5,7 +5,7 @@ import StoreContext from '../context'
 
 const ListaCitas = () => {
   const context = useContext(StoreContext)
-  const strapiAPI = 'https://cms-metodos.herokuapp.com/'
+  const strapiAPI = 'https://cms-metodos.herokuapp.com'
   const [citas, setCitas] = useState({
     ok: false,
     data: {}

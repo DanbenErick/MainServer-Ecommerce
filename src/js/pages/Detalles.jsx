@@ -16,7 +16,7 @@ const Detalles = () => {
   let productoParaCarrito = {}
 
   useEffect(() => {
-    axios.get('https://cms-metodos.herokuapp.com//productos/' + idParam)
+    axios.get('https://cms-metodos.herokuapp.com/productos/' + idParam)
     .then(res => {
       setItem({
         ok: true,
@@ -45,7 +45,7 @@ const Detalles = () => {
         <section className="detalles" key={item.data.id}>
           <div className="detalle-producto">
             <div className="detalle-imagen">
-              <img src={'https://cms-metodos.herokuapp.com/' + item.data.imagen} alt="" />
+              <img src={'https://cms-metodos.herokuapp.com' + item.data.imagen} alt="" />
             </div>
             <div className="detalle-informacion">
               <h2>{item.data.nombre}</h2>

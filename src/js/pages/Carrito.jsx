@@ -37,7 +37,7 @@ const Carrito = () => {
             carrito.data.map((itemCarrito, index) => (
               <article className="producto" key={index}>
                 <div className="producto-imagen">
-                  <img src={'https://cms-metodos.herokuapp.com/' + itemCarrito.image} alt="" />
+                  <img src={'https://cms-metodos.herokuapp.com' + itemCarrito.image} alt="" />
                 </div>
                 <div className="producto-informacion">
                   <h2>{itemCarrito.name}</h2>
