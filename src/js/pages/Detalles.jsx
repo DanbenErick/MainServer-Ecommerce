@@ -2,10 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from '../components/Header.jsx'
 import { useParams } from 'react-router-dom'
-
-// import '../../../dist/css/style-detalle-producto.css'
-
-import data from '../../database/data'
+// import data from '../../database/data'
 import StoreContext from '../context'
 
 
@@ -19,7 +16,7 @@ const Detalles = () => {
   let productoParaCarrito = {}
 
   useEffect(() => {
-    axios.get('http://localhost:1337/productos/' + idParam)
+    axios.get('https://cms-metodos.herokuapp.com//productos/' + idParam)
     .then(res => {
       setItem({
         ok: true,
@@ -36,8 +33,8 @@ const Detalles = () => {
       price: item.data.precio,
       description: item.data.description
     }
-    console.log("Detalles", productoParaCarrito)
     context.addCarrito(productoParaCarrito)
+    alert("Producto agregado")
   }
 
   return (
@@ -48,7 +45,7 @@ const Detalles = () => {
         <section className="detalles" key={item.data.id}>
           <div className="detalle-producto">
             <div className="detalle-imagen">
-              <img src={'http://localhost:1337' + item.data.imagen} alt="" />
+              <img src={'https://cms-metodos.herokuapp.com/' + item.data.imagen} alt="" />
             </div>
             <div className="detalle-informacion">
               <h2>{item.data.nombre}</h2>

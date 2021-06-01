@@ -4,7 +4,7 @@ const StoreContext = React.createContext({
   carrito: [],
   cliente: {},
   token: null,
-  addCarrito: (producto) => { },
+  addCarrito: (producto) => {},
   removeCarrito: (index) => {},
   addCliente: (cliente) => {},
   addToken: (token) => {},

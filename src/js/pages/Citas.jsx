@@ -26,7 +26,7 @@ const Citas = () => {
     }
     data.estado_cita = "Pendiente"
     console.log("DATOSSSs (2)", data)
-    axios.post('http://localhost:1337/citas', data)
+    axios.post('https://cms-metodos.herokuapp.com//citas', data)
       .then(response => {
         setModal({
           ok: true,

@@ -5,7 +5,7 @@ import axios from 'axios'
 // import "../../../dist/css/style-detalle-pedidos.css"
 import StoreContext from '../context'
 const PedidoDetalle = () => {
-  const strapiAPI = 'http://localhost:1337'
+  const strapiAPI = 'https://cms-metodos.herokuapp.com/'
   const context = useContext(StoreContext)
   const { id } = useParams()
   const [ pedido, setPedido ] = useState({

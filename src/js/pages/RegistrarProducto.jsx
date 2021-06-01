@@ -18,7 +18,7 @@ const RegistrarProducto = () => {
   
   const sendData = () => {
     const formData = new FormData(form.current)
-    axios.post('http://localhost:1337/upload', formData, {
+    axios.post('https://cms-metodos.herokuapp.com//upload', formData, {
       headers: {
         Authorization: `Bearer ${context.token}`
       }
@@ -28,7 +28,7 @@ const RegistrarProducto = () => {
       formData.delete('files')
       console.log("URL de Imagen", res.data[0].url)
       formData.set('imagen', res.data[0].url)
-      axios.post('http://localhost:1337/productos', {
+      axios.post('https://cms-metodos.herokuapp.com//productos', {
         nombre: formData.get('nombre'),
         descripcion: formData.get('descripcion'),
         precio: formData.get('precio'),

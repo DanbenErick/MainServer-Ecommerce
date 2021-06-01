@@ -26,7 +26,7 @@ const InformacionEnvio = () => {
       dni: dni.current.value,
     }
 
-    axios.post('http://localhost:1337/clientes', {
+    axios.post('https://cms-metodos.herokuapp.com//clientes', {
       nombre_completo: cliente.name,
       correo: cliente.email,
       telefono: cliente.phone,
