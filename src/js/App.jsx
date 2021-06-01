@@ -66,7 +66,7 @@ const App = () => {
               <Route path="/productos" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-index.css" />
+                  <link rel="stylesheet" href="./dist/css/style-index.css" />
                   <title>Productos | Tienda | MainServer</title>
                 </Helmet>
                 <Productos productos={data}/>
@@ -74,7 +74,7 @@ const App = () => {
               <Route path="/productos/detalles/:idParam" exact >
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-detalle-producto.css" />
+                  <link rel="stylesheet" href="./dist/css/style-detalle-producto.css" />
                   <title>Citas | Tienda | MainServer</title>
                 </Helmet>
                 <Detalles />
@@ -82,7 +82,7 @@ const App = () => {
               <Route path="/empleado" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-datos-personales.css" />
+                  <link rel="stylesheet" href="./dist/css/style-datos-personales.css" />
                   <title>Empleados | Tienda | MainServer</title>
                 </Helmet>
                 <Empleado />
@@ -90,7 +90,7 @@ const App = () => {
               <Route path="/empleado/perfil" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-perfil.css" />
+                  <link rel="stylesheet" href="./dist/css/style-perfil.css" />
                   <title>Perfil</title>
                 </Helmet>
                 <Perfil />
@@ -98,7 +98,7 @@ const App = () => {
               <Route path="/empleado/registrar-producto" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-registrar-producto.css" />
+                  <link rel="stylesheet" href="./dist/css/style-registrar-producto.css" />
                   {/* Este si no tiene un css propio */}
                   <title>Registrar Producto | Tienda | MainServer</title>
                 </Helmet>
@@ -107,7 +107,7 @@ const App = () => {
               <Route path="/empleado/pedidos" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-pedidos.css" />
+                  <link rel="stylesheet" href="./dist/css/style-pedidos.css" />
                   <title>Pedidos | Tienda | MainServer</title>
                 </Helmet>
                 <Pedidos />
@@ -115,7 +115,7 @@ const App = () => {
               <Route path="/empleado/pedidos/:id" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-detalle-pedidos.css" />
+                  <link rel="stylesheet" href="./dist/css/style-detalle-pedidos.css" />
                   <title>Detalle de Pedido | Tienda | MainServer</title>
                 </Helmet>
                 <PedidoDetalle />
@@ -123,7 +123,7 @@ const App = () => {
               <Route path="/empleado/lista-citas" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-lista-citas.css" />
+                  <link rel="stylesheet" href="./dist/css/style-lista-citas.css" />
                   <title>Lista de Citas</title>
                 </Helmet>
                 <ListaCitas />
@@ -131,7 +131,7 @@ const App = () => {
               <Route path="/carrito" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-carrito.css" />
+                  <link rel="stylesheet" href="./dist/css/style-carrito.css" />
                   <title>Carrito</title>
                 </Helmet>
                 <Carrito />
@@ -139,7 +139,7 @@ const App = () => {
               <Route path="/carrito/informacion" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-datos-personales.css" />
+                  <link rel="stylesheet" href="./dist/css/style-datos-personales.css" />
                   <title>Informacion de Envio</title>
                 </Helmet>
                 <InformacionEnvio />
@@ -147,7 +147,7 @@ const App = () => {
               <Route path="/carrito/pagar" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-index.css" />
+                  <link rel="stylesheet" href="./dist/css/style-index.css" />
                   <title>Pago</title>
                 </Helmet>
                 <Pago />
@@ -155,7 +155,7 @@ const App = () => {
               <Route path="/carrito/confirmacion" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-confirmacion.css" />
+                  <link rel="stylesheet" href="./dist/css/style-confirmacion.css" />
                   <title>Confirmacion</title>
                 </Helmet>
                 <Confirmacion />
@@ -163,7 +163,7 @@ const App = () => {
               <Route path="/citas" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-citas.css" />
+                  <link rel="stylesheet" href="./dist/css/style-citas.css" />
                   <title>Citas | Tienda | MainServer</title>
                 </Helmet>
                 <Citas />
