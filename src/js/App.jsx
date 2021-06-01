@@ -171,12 +171,17 @@ const App = () => {
               <Route path="/" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="../../dist/css/style-index.css" />
+                  <link rel="stylesheet" href="./dist/css/style-index.css" />
                   <title>Productos | Tienda | MainServer</title>
                 </Helmet>
                 <Productos productos={data}/>
               </Route>
               <Route>
+                <Helmet>
+                  <meta charset="utf-8"/>
+                  <link rel="stylesheet" href="./dist/style-index.css" />
+                  <title>La pagina que buscaste no existe</title>
+                </Helmet>
                 <h1>No existe esta pagina</h1>
               </Route>
             </Switch>
