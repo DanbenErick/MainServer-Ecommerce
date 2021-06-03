@@ -12,7 +12,11 @@ const ListaCitas = () => {
   })
   
   const traerCitas = () => {
-    axios.get(`${strapiAPI}/citas`)
+    axios.get(`${strapiAPI}/citas`, {
+      headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      }
+    })
     .then(response => {
       setCitas({
         ok: true,

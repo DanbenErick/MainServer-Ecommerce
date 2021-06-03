@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useContext } from 'react'
+import React, { useEffect, useRef, useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../components/Header.jsx'
-
+import Spinner from '../components/Spinner.jsx'
 // import "../../../dist/css/style-datos-personales.css"
 import StoreContext from '../context'
 const Empleado = () => {
@@ -13,18 +13,23 @@ const Empleado = () => {
   const usuario = useRef(null)
   const password = useRef(null)
   
+  const [loader, setLoader] = useState(false)
+
   useEffect(() => {
     
   }, [])
 
   const sendEmpleado = () => {
     if(usuario.current.value != "" && password.current.value != "") {
+      setLoader(true)
       axios.post('https://cms-metodos.herokuapp.com/auth/local', {
         identifier: usuario.current.value,
         password: password.current.value
       })
       .then(response => {
         context.addToken(response.data.jwt)
+        sessionStorage.setItem('token', response.data.jwt)
+        setLoader(false)
         alert("Autenticacion Correcta")
         history.push('/empleado/perfil')
       })
@@ -54,6 +59,13 @@ const Empleado = () => {
           </form>
         </div>
       </section>
+      {
+        loader 
+        ?
+          <Spinner />
+        :
+          <></>
+      }
     </>
   )
 }

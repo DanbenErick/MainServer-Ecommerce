@@ -22,7 +22,7 @@ const Pedidos = () => {
   const traerPedidos = () => {
     axios.get(`${strapiAPI}/clientes`, {
       headers: {
-        Authorization: `Bearer ${context.token}`
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
       }
     })
     // axios.get(`${strapiAPI}/clientes`)

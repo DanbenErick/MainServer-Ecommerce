@@ -20,7 +20,7 @@ const RegistrarProducto = () => {
     const formData = new FormData(form.current)
     axios.post('https://cms-metodos.herokuapp.com/upload', formData, {
       headers: {
-        Authorization: `Bearer ${context.token}`
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
       }
     })
 
@@ -35,7 +35,7 @@ const RegistrarProducto = () => {
         imagen: formData.get('imagen'),
       }, {
         headers: {
-          Authorization: `Bearer ${context.token}`
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`
         }
       })
       .then(res => {

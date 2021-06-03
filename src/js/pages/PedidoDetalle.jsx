@@ -15,7 +15,7 @@ const PedidoDetalle = () => {
   useEffect(() => {
     axios.get(`${strapiAPI}/clientes/${id}`, {
       headers: {
-        Authorization: `Bearer ${context.token}`
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
       }
     })
     .then(response => {

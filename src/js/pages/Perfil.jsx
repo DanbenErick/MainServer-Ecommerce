@@ -19,6 +19,15 @@ const Perfil = () => {
   const goToPedidos = () => {
     history.push('/empleado/pedidos')
   }
+  const goToReporteSemanal = () => {
+    history.push('/empleado/reporte-semanal')
+  }
+  const goToReporteMensual = () => {
+    history.push('/empleado/reporte-mensual')
+  }
+  const goToReporteAnual = () => {
+    history.push('/empleado/reporte-anual')
+  }
 
   return (
     <>
@@ -28,6 +37,10 @@ const Perfil = () => {
           <li className="link" onClick={goToRegisterProduct} >Registrar Productos</li>
           <li className="link" onClick={goToRegisterCitas} >Lista de Citas</li>
           <li className="link" onClick={goToPedidos} >Pedidos</li>
+          <li className="link" onClick={goToPedidos} >Pedidos</li>
+          <li className="link" onClick={goToReporteSemanal} >Reporte Semanal</li>
+          <li className="link" onClick={goToReporteMensual} >Reporte Mensual</li>
+          <li className="link" onClick={goToReporteAnual} >Reporte Anual</li>
         </ul>
       </section>
     </>

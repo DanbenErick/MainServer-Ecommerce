@@ -1,0 +1,56 @@
+@import "componenets/basic";
+@import "componenets/nav";
+@import "componenets/header";
+@import "componenets/section";
+section.reporte-mensual {
+  @import "componenets/form";
+
+  .formulario {
+    padding-bottom: 50px;
+  }
+
+  .container-table {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      thead {
+        color: white;
+        background: $color-primary;
+        th {
+          padding: 5px 0;
+        }
+      }
+      td {
+        text-align: center;
+        button {
+          background: #ddd;
+          border: none;
+          margin-right: 5px;
+          padding: 5px 10px;
+        }
+      }
+    }
+    @media (max-width: 480px) {
+      width: 95%;
+    }
+  }
+  .container-table {
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar:horizontal {
+      height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparentize(#ccc, 0.7);
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: transparentize(#ccc, 0.5);
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    }
+  }
+}

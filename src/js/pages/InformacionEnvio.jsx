@@ -1,9 +1,12 @@
-import React, { useRef, useContext } from 'react'
+import React, { useRef, useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../components/Header.jsx'
-// import "../../../dist/css/style-datos-personales.css"
+import Spinner from '../components/Spinner.jsx'
+
 import StoreContext from '../context'
+
 import axios from 'axios'
+import moment from 'moment'
 
 const InformacionEnvio = () => {
   
@@ -15,6 +18,8 @@ const InformacionEnvio = () => {
   const direccion = useRef(null)
   const dni = useRef(null)
   const history = useHistory()
+
+  const [ loader, setLoader ] = useState(false)
 
   const goToPagar = () => {
     
@@ -33,8 +38,13 @@ const InformacionEnvio = () => {
       direccion: cliente.address,
       dni: cliente.dni,
       pedidos: context.carrito,
-      estado_pedido: 'Pendiente'
+      estado_pedido: 'Pendiente',
+      semana_venta: moment().isoWeek(),
+      mes_venta: moment().month(),
+      ano_venta: moment().year(),
+      fecha_compra: moment().format('YYYY-MM-DD')
     })
+    // setLoader(true)
     
     context.addCliente(cliente)
     console.log("Informacion Envio", context)
@@ -73,6 +83,13 @@ const InformacionEnvio = () => {
           </form>
         </div>
       </section>
+      {
+        loader
+        ?
+        <Spinner />
+        :
+        <></>
+      }
     </>
   )
 }

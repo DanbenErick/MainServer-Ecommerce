@@ -34,4 +34,7 @@ section.confirmacion {
   img {
     width: 100%;
   }
+  @media (max-width:480px) {
+    grid-template-columns: 1fr;
+  }
 }
