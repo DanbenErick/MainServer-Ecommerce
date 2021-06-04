@@ -37,7 +37,6 @@ const Perfil = () => {
           <li className="link" onClick={goToRegisterProduct} >Registrar Productos</li>
           <li className="link" onClick={goToRegisterCitas} >Lista de Citas</li>
           <li className="link" onClick={goToPedidos} >Pedidos</li>
-          <li className="link" onClick={goToPedidos} >Pedidos</li>
           <li className="link" onClick={goToReporteSemanal} >Reporte Semanal</li>
           <li className="link" onClick={goToReporteMensual} >Reporte Mensual</li>
           <li className="link" onClick={goToReporteAnual} >Reporte Anual</li>

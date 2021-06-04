@@ -73,7 +73,7 @@ const App = () => {
                   <link rel="stylesheet" href="./dist/css/style-index.css" />
                   <title>Productos | Tienda | MainServer</title>
                 </Helmet>
-                <Productos productos={data}/>
+                <Productos productos={data} loader={true}/>
               </Route>
               <Route path="/productos/detalles/:idParam" exact >
                 <Helmet>

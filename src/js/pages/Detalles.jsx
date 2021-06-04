@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import Header from '../components/Header.jsx'
 import { useParams } from 'react-router-dom'
-// import data from '../../database/data'
+import Swal from 'sweetalert2'
 import StoreContext from '../context'
 
 
@@ -34,7 +34,11 @@ const Detalles = () => {
       description: item.data.description
     }
     context.addCarrito(productoParaCarrito)
-    alert("Producto agregado")
+    Swal.fire({
+      icon: 'success',
+      title: 'Exito!',
+      text: 'Producto agregado al carrito!',
+    })
   }
 
   return (

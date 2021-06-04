@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import Header from '../components/Header.jsx'
 import StoreContext from '../context'
-
+import Swal from 'sweetalert2'
 const ListaCitas = () => {
   const context = useContext(StoreContext)
   const strapiAPI = 'https://cms-metodos.herokuapp.com'
@@ -26,12 +26,6 @@ const ListaCitas = () => {
   }
 
   useEffect(() => {
-    // axios.get(`${strapiAPI}/citas`,{
-    //   headers: {
-    //     Authorization: `Bearer ${context.token}`
-    //   }
-    // })
-    
     traerCitas()
   }, [])
 
@@ -42,7 +36,11 @@ const ListaCitas = () => {
     axios.put(`${strapiAPI}/citas/${id}`, data)
     .then(response => {
       traerCitas()
-      alert("Se cambio el estado")
+      Swal.fire({
+        icon: 'success',
+        title: 'Exito!',
+        text: 'Se cambio correctamente el estado de la cita!',
+      })
     })
   }
 
@@ -53,7 +51,11 @@ const ListaCitas = () => {
     axios.put(`${strapiAPI}/citas/${id}`, data)
     .then(response => {
       traerCitas()
-      alert("Se cambio el estado")
+      Swal.fire({
+        icon: 'success',
+        title: 'Exito!',
+        text: 'Se cambio correctamente el estado de la cita!',
+      })
     })
   }
   const citaAtendida = (id) => {
@@ -63,7 +65,11 @@ const ListaCitas = () => {
     axios.put(`${strapiAPI}/citas/${id}`, data)
     .then(response => {
       traerCitas()
-      alert("Se cambio el estado")
+      Swal.fire({
+        icon: 'success',
+        title: 'Exito!',
+        text: 'Se cambio correctamente el estado de la cita!',
+      })
     })
   }
     

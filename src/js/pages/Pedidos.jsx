@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import Header from '../components/Header.jsx'
 
 // import "../../../dist/css/style-pedidos.css"
@@ -50,7 +51,11 @@ const Pedidos = () => {
     })
     .then(response => {
       traerPedidos()
-      alert("Estado cambiado")
+      Swal.fire({
+        icon: 'success',
+        title: 'Exito!',
+        text: 'Se cambio correctamente el estado del pedido!',
+      })
     })
   }
 
@@ -60,7 +65,11 @@ const Pedidos = () => {
     })
     .then(response => {
       traerPedidos()
-      alert("Estado cambiado")
+      Swal.fire({
+        icon: 'success',
+        title: 'Exito!',
+        text: 'Se cambio correctamente el estado del pedido!',
+      })
     })
   }
 
@@ -70,7 +79,11 @@ const Pedidos = () => {
     })
     .then(response => {
       traerPedidos()
-      alert("Estado cambiado")
+      Swal.fire({
+        icon: 'success',
+        title: 'Exito!',
+        text: 'Se cambio correctamente el estado del pedido!',
+      })
     })
   }
 

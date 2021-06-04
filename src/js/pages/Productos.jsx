@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react'
 import Header from '../components/Header.jsx'
 import { Link } from 'react-router-dom'
 
+import Spinner from '../components/Spinner.jsx'
+
 const Productos = (props) => {
   const [ productos, setProductos ] = useState([])
+  const [ loader, setLoader ] = useState(props.loader)
   useEffect(() => { 
     props.productos.then( res => {
       setProductos(res)
+      setLoader(false)
     })
   }, [])
   return (
@@ -35,6 +39,7 @@ const Productos = (props) => {
           }
         </div>
       </section>
+      {loader ? <Spinner /> : <></>}
     </>
   )
 }

@@ -1,10 +1,14 @@
 {
-  "name": "Ecommerce-MainServerPeru",
+  "name": "ecommerce-mainserverperu",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/DanbenErick/MainServer-Ecommerce.git",
   "author": "Danben Erick <danbencb08@outlook.es>",
   "license": "MIT",
+  "scripts": {
+    "webpack:build": "webpack --mode production",
+    "format": "prettier"
+  },
   "dependencies": {
     "@babel/core": "^7.7.7",
     "@babel/plugin-transform-runtime": "^7.13.9",
@@ -21,9 +25,11 @@
     "react-helmet": "^6.1.0",
     "react-paypal-button-v2": "^2.6.3",
     "react-router-dom": "^5.2.0",
-    "style-loader": "^2.0.0"
+    "style-loader": "^2.0.0",
+    "sweetalert2": "^11.0.16"
   },
   "devDependencies": {
+    "prettier": "^2.3.0",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"

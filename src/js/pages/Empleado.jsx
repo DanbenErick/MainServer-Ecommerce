@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../components/Header.jsx'
 import Spinner from '../components/Spinner.jsx'
-// import "../../../dist/css/style-datos-personales.css"
+import Swal from 'sweetalert2'
 import StoreContext from '../context'
 const Empleado = () => {
 
@@ -30,7 +30,11 @@ const Empleado = () => {
         context.addToken(response.data.jwt)
         sessionStorage.setItem('token', response.data.jwt)
         setLoader(false)
-        alert("Autenticacion Correcta")
+        Swal.fire({
+          icon: 'success',
+          title: 'Exito!',
+          text: 'Ingresaste correctamente al sistema!',
+        })
         history.push('/empleado/perfil')
       })
     }else {
