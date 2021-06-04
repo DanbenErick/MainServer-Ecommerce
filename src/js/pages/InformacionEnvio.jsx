@@ -42,7 +42,7 @@ const InformacionEnvio = () => {
         pedidos: context.carrito,
         estado_pedido: 'Pendiente',
         semana_venta: moment().isoWeek(),
-        mes_venta: moment().month(),
+        mes_venta: moment().format('M'),
         ano_venta: moment().year(),
         fecha_compra: moment().format('YYYY-MM-DD')
       })
