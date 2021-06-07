@@ -46,6 +46,9 @@ const InformacionEnvio = () => {
         ano_venta: moment().year(),
         fecha_compra: moment().format('YYYY-MM-DD')
       })
+      .then( response => {
+        cliente.id_pedido = response.data.id
+      })
       setLoader(true)
       
       context.addCliente(cliente)

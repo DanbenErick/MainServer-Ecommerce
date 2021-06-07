@@ -204,11 +204,11 @@ const App = () => {
                 </Helmet>
                 <Productos productos={data}/>
               </Route>
-              <Route path="/estado-pedido" exact>
+              <Route path="/estado-pedido/:idParam" exact>
                 <Helmet>
                   <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="./dist/css/style-index.css" />
-                  <title>Productos | Tienda | MainServer</title>
+                  <link rel="stylesheet" href="./dist/css/style-detalle-pedidos.css" />
+                  <title>Estado del Pedido | Tienda | MainServer</title>
                 </Helmet>
                 <EstadoPedido />
               </Route>

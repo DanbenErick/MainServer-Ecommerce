@@ -1,21 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
-// import '../../../dist/css/style-confirmacion.css'
-
-import StoreContext from '../context'
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import StoreContext from "../context";
 const Confirmacion = () => {
-  // const [ cliente, setCliente ] = useState({})
-  const { cliente } = useContext(StoreContext)
-  // console.log("Confirmacion",context)
+  const { cliente } = useContext(StoreContext);
+  const history = useHistory();
 
-  // useEffect(() => {
-  //   setCliente({
-  //     name: context.cliente.name || '',
-  //     email: context.cliente.email || '',
-  //     phone: context.cliente.phone || '',
-  //     address: context.cliente.address || '',
-  //     dni: context.cliente.dni || '',
-  //   })
-  // })
+  const goToDetails = (idParam) => {
+    history.push("../../estado-pedido/" + idParam);
+  };
 
   return (
     <>
@@ -46,13 +38,20 @@ const Confirmacion = () => {
             <h3>DNI</h3>
             <p>{cliente.dni}</p>
           </div>
+          <div className="informacion-cliente">
+            <h3>Estado de Pedido</h3>
+            <button onClick={() => goToDetails(cliente.id_pedido)}>
+              {" "}
+              Ver el estado del pedido
+            </button>
+          </div>
         </div>
         <div className="imagen">
           <img src="dist/img/confirmed.jpg" alt="" />
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Confirmacion
+export default Confirmacion;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../components/Header.jsx'
 import axios from 'axios'
-import { object } from 'prop-types'
+
 
 const ReporteSemanal = () => {
 
