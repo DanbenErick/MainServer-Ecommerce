@@ -1,16 +1,41 @@
 import React from 'react'
-import {PayPalButton} from 'react-paypal-button-v2'
+import PaypalCheckoutButton from '../components/PaypalCheckoutButton.jsx'
+
 
 const Pago = () => {
+
+  const order= {
+    customer: '123456',
+    total: '20.00',
+    items:[ 
+      {
+        sku: '123',
+        name: 'Camisa ReactJS',
+        price: '251.00',
+        quantity: 2,
+        currency: 'USD'
+      },
+      {
+        sku: '12',
+        name: 'Camisa JS',
+        price: '251.00',
+        quantity: 2,
+        currency: 'USD'
+      },
+      {
+        sku: '1243',
+        name: 'Camisa Pipm',
+        price: '251.00',
+        quantity: 2,
+        currency: 'USD'
+      },
+    ]
+  }
   return (
     <>
       <section>
-      <PayPalButton
-          amount="10.00"
-          currency="USD"
-          option={{
-            clientId: "AX9cSMTq1KMs1dJXT9TMkM1LnxhNGn65rIiDpK4CaixTaY7R2GRMkLKZzvDJ6T_HflCDTy3ccUSV3h-b"
-          }}
+        <PaypalCheckoutButton
+            order={order}
         />
       </section>
     </>

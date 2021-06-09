@@ -3,6 +3,9 @@
 @import "componenets/header";
 
 section.section-lista-pedidos {
+  .informacion {
+    margin-bottom: 30px;
+  }
   display: flex;
   justify-content: center;
   .container-table {
@@ -14,6 +17,9 @@ section.section-lista-pedidos {
       margin-bottom: 0;
       max-width: none;
       border-collapse: collapse;
+      tr:hover {
+        background: rgba($color-primary, .2);
+      }
       thead {
         color: white;
         background: $color-primary;

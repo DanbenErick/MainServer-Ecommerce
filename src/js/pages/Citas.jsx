@@ -14,7 +14,7 @@ const Citas = () => {
   const correo = useRef(null);
   const telefono = useRef(null);
   const problema = useRef(null);
-  const marca_producto = useRef(null);
+  const tipo_producto = useRef(null);
 
   const hideModal = () => {
     setModal({ok: false, nombre: ""})
@@ -27,14 +27,14 @@ const Citas = () => {
       correo.current.value != "" &&
       telefono.current.value != "" &&
       problema.current.value != "" &&
-      marca_producto.current.value != ""
+      tipo_producto.current.value != ""
     ) {
       const data = {
         nombre_completo: nombre_completo.current.value,
         correo: correo.current.value,
         telefono: telefono.current.value,
         problema: problema.current.value,
-        marca_producto: marca_producto.current.value,
+        tipo_producto: tipo_producto.current.value,
         estado_cita: "Pendiente",
       };
 
@@ -49,7 +49,7 @@ const Citas = () => {
           correo.current.value = "";
           telefono.current.value = "";
           problema.current.value = "";
-          marca_producto.current.value = "";
+          tipo_producto.current.value = "";
         })
         .catch((error) => {
           console.log(error);
@@ -91,8 +91,8 @@ const Citas = () => {
               <input type="text" ref={problema} maxLength="30" required />
             </div>
             <div className="input-group">
-              <label>Marca del Producto</label>
-              <input type="text" ref={marca_producto} required />
+              <label>Que equipo es: (Laptop, Impresora, etc)</label>
+              <input type="text" ref={tipo_producto} required />
             </div>
             <div className="input-group">
               <button type="submit" onClick={saveCita}>
