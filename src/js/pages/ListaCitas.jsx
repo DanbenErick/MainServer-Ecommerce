@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef, useReducer } from 'react'
 import axios from 'axios'
 import Header from '../components/Header.jsx'
 import StoreContext from '../context'
@@ -8,6 +8,8 @@ import moment from 'moment'
 
 
 const ListaCitas = () => {
+  const input_estado = useRef('')
+  const input_celular = useRef('')
   const context = useContext(StoreContext)
   const strapiAPI = 'https://cms-metodos.herokuapp.com'
   const MySwal = widthReactContent(Swal)
@@ -79,12 +81,12 @@ const ListaCitas = () => {
               <br />
               <div class="informacion">
                 <b>Fecha de la Cita</b>
-                <p>${data.fecha_cita || 'sin registro'}</p>
+                <p>${data.fecha_cita || 'Sin registro'}</p>
               </div>
               <br />
               <div class="informacion">
                 <b>Fecha de Atencion</b>
-                <p>${data.fecha_atencion || 'sin registro'}</p>
+                <p>${data.fecha_atencion || 'Sin registro'}</p>
               </div>`
       })
     })
@@ -176,47 +178,95 @@ const ListaCitas = () => {
     })
   }
     
+  const filtroEstado = () => {
+    if(input_estado.current.value == "Todos") {
+      traerCitas()
+    }else {
+      axios.get(`${strapiAPI}/citas/?estado_cita=${input_estado.current.value}`)
+      .then(respuesta => {
+        console.log(respuesta)
+        setCitas({
+          ok: true,
+          data: respuesta.data
+        })
+      })
+    }
+  }
+
+  const filtroCelular = () => {
+    if(input_celular.current.value == '') {
+      traerCitas()
+    }else {
+      axios.get(`${strapiAPI}/citas/?telefono=${input_celular.current.value}`)
+      .then(respuesta => {
+        setCitas({
+          ok: true,
+          data: respuesta.data
+        })
+      })
+    }
+  }
+
   return (
     <>
       <Header
         title="Lista de Citas"
       />
       <section className="section-lista-pedidos">
-        <div className="container-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Nombre Completo</th>
-                <th>Estado</th>
-                <th>Telefono</th>
-                <th>Fecha de Registro</th>
-                <th>Accion</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                citas.ok
-                ?
-                  citas.data.map(cita => (
-                    <tr key={cita.id}>
-                      <td onClick={() => traerDetalles(cita.id)} >{cita.nombre_completo}</td>
-                      <td>{cita.estado_cita}</td>
-                      <td>{cita.telefono}</td>
-                      <td>{moment(cita.created_at).format('DD-MM-YYYY')}</td>
-                      <td>
-                        <button className="aceptada" onClick={() => citaAceptada(cita.id)}>Aceptada</button>
-                        <button className="rechazada" onClick={() => citaRechazada(cita.id)}>Rechazada</button>
-                        <button className="atendida" onClick={() => citaAtendida(cita.id)}>Atendida</button>
-                      </td>
-                    </tr>
-                  ))
-                :
+        <div className="container">
+          <div className="container-form">
+            <div className="input_group">
+              <label htmlFor="">Numero de Celular</label>
+              <input type="text" ref={input_celular} />
+              <button onClick={filtroCelular}>Buscar</button>
+            </div>
+            <div className="input_group">
+              <label htmlFor="estado">Estado</label>
+              <select onChange={filtroEstado} ref={input_estado}>
+                <option value="Todos">Elige una Opcion..</option>
+                <option value="Pendiente">Pendiente</option>
+                <option value="Aceptada">Aceptada.</option>
+                <option value="Rechazada">Rechazada</option>
+                <option value="Atendida">Atendida</option>
+              </select>
+            </div>
+          </div>
+          <div className="container-table">
+            <table>
+              <thead>
                 <tr>
-                  <td colSpan="7">No hay citas por ver</td>
+                  <th>Nombre Completo</th>
+                  <th>Estado</th>
+                  <th>Telefono</th>
+                  <th>Fecha de Registro</th>
+                  <th>Accion</th>
                 </tr>
-              }
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {
+                  citas.ok
+                  ?
+                    citas.data.map(cita => (
+                      <tr key={cita.id}>
+                        <td onClick={() => traerDetalles(cita.id)} >{cita.nombre_completo}</td>
+                        <td>{cita.estado_cita}</td>
+                        <td>{cita.telefono}</td>
+                        <td>{moment(cita.created_at).format('DD-MM-YYYY')}</td>
+                        <td>
+                          <button className="aceptada" onClick={() => citaAceptada(cita.id)}>Aceptada</button>
+                          <button className="rechazada" onClick={() => citaRechazada(cita.id)}>Rechazada</button>
+                          <button className="atendida" onClick={() => citaAtendida(cita.id)}>Atendida</button>
+                        </td>
+                      </tr>
+                    ))
+                  :
+                  <tr>
+                    <td colSpan="7">No hay citas por ver</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     </>
