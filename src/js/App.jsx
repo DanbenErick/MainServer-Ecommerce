@@ -23,7 +23,10 @@ import ReporteSemanal from './pages/ReporteSemanal.jsx'
 import ReporteMensual from './pages/ReporteMensual.jsx'
 import ReporteAnual from './pages/ReporteAnual.jsx'
 import EstadoPedido from './pages/EstadoPedido.jsx'
-
+import Administrador from './pages/Administrador.jsx'
+import PerfilAdministrador from './pages/PerfilAdministrador.jsx'
+import RegistrarEmpleado from './pages/RegistrarEmpleado.jsx'
+import ListaEmpleados from './pages/LsitaEmpleados.jsx'
 
 // Data Inicial
 import data from '../database/data'
@@ -74,6 +77,38 @@ const App = () => {
                   <title>Productos | Tienda | MainServer</title>
                 </Helmet>
                 <Productos productos={data} loader={true}/>
+              </Route>
+              <Route path="/administrador" exact >
+                <Helmet>
+                  <meta charset="utf-8"/>
+                  <link rel="stylesheet" href="./dist/css/style-datos-personales.css" />
+                  <title>Administrador</title>
+                </Helmet>
+                <Administrador />
+              </Route>
+              <Route path="/administrador/perfil" exact >
+                <Helmet>
+                  <meta charset="utf-8"/>
+                  <link rel="stylesheet" href="./dist/css/style-perfil.css" />
+                  <title>Perfil Administrador</title>
+                </Helmet>
+                <PerfilAdministrador />
+              </Route>
+              <Route path="/administrador/lista-empleados" exact >
+                <Helmet>
+                  <meta charset="utf-8"/>
+                  <link rel="stylesheet" href="./dist/css/style-lista-citas.css" />
+                  <title>Lista de Empleados | Tienda | MainServer</title>
+                </Helmet>
+                <ListaEmpleados />
+              </Route>
+              <Route path="/administrador/registrar-empleado" exact >
+                <Helmet>
+                  <meta charset="utf-8"/>
+                  <link rel="stylesheet" href="./dist/css/style-registrar-producto.css" />
+                  <title>Registrar Empleado</title>
+                </Helmet>
+                <RegistrarEmpleado />
               </Route>
               <Route path="/productos/detalles/:idParam" exact >
                 <Helmet>

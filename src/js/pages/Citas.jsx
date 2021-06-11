@@ -65,11 +65,6 @@ const Citas = () => {
 
   return (
     <>
-      <Helmet>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="../../../dist/css/style-citas.css" />
-        <title>Citas | Tienda | Main Server</title>
-      </Helmet>
       <Header title="Citas" />
       <section className="citas">
         <div className="contenedor-form">

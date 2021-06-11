@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../components/Header.jsx'
 import axios from 'axios'
-
+import moment from 'moment'
 
 const ReporteSemanal = () => {
 
@@ -10,7 +10,7 @@ const ReporteSemanal = () => {
 
   let cantidadSemanas = []
   let repetido = {}
-  
+
   pedidos.forEach(numero => {
     repetido[numero.name] = (repetido[numero.name] || 0) + 1
   })
@@ -44,9 +44,12 @@ const ReporteSemanal = () => {
             <label>Numero de Semana</label>
             <select value={select} onChangeCapture={handleSelect}>
               <option value="null">Elige una opcion...</option>
-              {cantidadSemanas.map(numero => (
-                <option key={numero} value={numero}>Semana: {numero}</option>
-              ))}
+              {cantidadSemanas.map((numero, index) => {
+                let new_numero = numero + 1
+              return (
+                <option key={numero} value={numero}>Semana: {numero} - {moment(moment().week(numero)).format('DD MM YYYY')} - {moment(moment().week(new_numero)).format('DD MM YYYY')}</option>
+              )
+              })}
             </select>
             <button onClick={() => getData(select)}>Buscar</button>
             </div>
