@@ -40,10 +40,10 @@ const RegistrarProducto = () => {
       })
       .then(res => {
         alert("Producto creado")
-        nombre.current = ''
-        descripcion.current = ''
-        precio.current = ''
-        imagen.current = ''
+        nombre.current.value = ''
+        descripcion.current.value = ''
+        precio.current.value = ''
+        imagen.current.value = ''
       })
       .catch(err => {
         console.log(err)

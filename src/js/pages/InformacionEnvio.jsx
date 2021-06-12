@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState } from 'react'
+import React, { useRef, useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Header from '../components/Header.jsx'
@@ -21,6 +21,7 @@ const InformacionEnvio = () => {
   const history = useHistory()
 
   const [ loader, setLoader ] = useState(false)
+  const [ precioTotal, setPrecioTotal] = useState(null)
 
   const goToPagar = (event) => {
     event.preventDefault()
@@ -30,9 +31,9 @@ const InformacionEnvio = () => {
         email: correoElectronico.current.value,
         phone: telefono.current.value,
         address: direccion.current.value,
-        dni: dni.current.value,
+        dni: dni.current.value
       }
-  
+      
       axios.post('https://cms-metodos.herokuapp.com/clientes', {
         nombre_completo: cliente.name,
         correo: cliente.email,
@@ -44,7 +45,8 @@ const InformacionEnvio = () => {
         semana_venta: moment().isoWeek(),
         mes_venta: moment().format('M'),
         ano_venta: moment().year(),
-        fecha_compra: moment().format('YYYY-MM-DD')
+        fecha_compra: moment().format('YYYY-MM-DD'),
+        precio_total: precioTotal
       })
       .then( response => {
         cliente.id_pedido = response.data.id
@@ -52,7 +54,6 @@ const InformacionEnvio = () => {
       setLoader(true)
       
       context.addCliente(cliente)
-      console.log("Informacion Envio", context)
       history.push('/carrito/confirmacion')
     } else {
       Swal.fire({
@@ -62,6 +63,17 @@ const InformacionEnvio = () => {
       })
     }
   }
+
+  useEffect(() => {
+    console.log("Carrito: informoacion: enveio", context.carrito)
+    let sumatoria = 0
+    if(context.carrito != null) {
+      context.carrito.map(item => {
+        sumatoria = parseInt(item.price) + parseInt(sumatoria)
+      })
+    }
+    setPrecioTotal(sumatoria.toString())
+  },[])
 
   return (
     <>

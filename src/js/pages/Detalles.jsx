@@ -26,12 +26,13 @@ const Detalles = () => {
   },[])
 
   const addToCart = () => {
+    console.log("Funcion:", item.data)
     productoParaCarrito = {
       id: item.data.id,
       name: item.data.nombre,
       image: item.data.imagen,
       price: item.data.precio,
-      description: item.data.description
+      description: item.data.descripcion
     }
     context.addCarrito(productoParaCarrito)
     Swal.fire({

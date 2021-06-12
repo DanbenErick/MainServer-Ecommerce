@@ -27,15 +27,24 @@ const Empleado = () => {
         password: password.current.value
       })
       .then(response => {
-        context.addToken(response.data.jwt)
-        sessionStorage.setItem('token', response.data.jwt)
-        setLoader(false)
-        Swal.fire({
-          icon: 'success',
-          title: 'Exito!',
-          text: 'Ingresaste correctamente al sistema!',
-        })
-        history.push('/empleado/perfil')
+        if(response.data.jwt != null) {
+          context.addToken(response.data.jwt)
+          sessionStorage.setItem('token', response.data.jwt)
+          setLoader(false)
+          Swal.fire({
+            icon: 'success',
+            title: 'Exito!',
+            text: 'Ingresaste correctamente al sistema!',
+          })
+          history.push('/empleado/perfil')
+        }else {
+          setLoader(false)
+          Swal.fire({
+            title: "Error",
+            icon: 'error',
+            text: 'No existe la cuenta'
+          })
+        }
       })
     }else {
       alert("Rellena los Datos")

@@ -19,7 +19,7 @@ const EstadoPedido = () => {
   
   return (
     <>
-      <Header title="Estado del Pedido"/>
+      <Header title={"Estado del pedido: " + estado.estado_pedido}/>
       <section className="section-pedido-detalle">
           <div className="pedidos">
             <div className="information">
@@ -37,10 +37,6 @@ const EstadoPedido = () => {
             <div className="information">
               <h2>Direccion</h2>
               <p>{estado.direccion}</p>
-            </div>
-            <div className="information">
-              <h2>Estado</h2>
-              <p>{estado.estado_pedido}</p>
             </div>
           </div>
         </section>

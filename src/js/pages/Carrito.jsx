@@ -11,7 +11,6 @@ const Carrito = () => {
 
   useEffect(() => {
     let sumatoria = 0
-    // localStorage.setItem('productos', )
     setCarrito({ ok: true, data: context.carrito})
     if(carrito.data != null) {
       carrito.data.map(item => {

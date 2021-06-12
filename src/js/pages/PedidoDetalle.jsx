@@ -67,7 +67,8 @@ const PedidoDetalle = () => {
                     <div className="pedido-item" key={index}>
                       <div className="pedido-item-datos">
                         <b>{pedidoItem.name}</b>
-                        <p>{pedidoItem.price}</p>
+                        <p style={{ fontSize: '12px', padding: '8px' }}>{pedidoItem.description}</p>
+                        <p>S/.{pedidoItem.price}</p>
                       </div>
                       <div className="pedido-item-imagen">
                         <img src={strapiAPI + pedidoItem.image} alt=""/>

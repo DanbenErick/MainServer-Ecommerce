@@ -152,8 +152,8 @@ const Pedidos = () => {
               <thead>
                 <tr>
                   <th>Nombre</th>
-                  <th>Telefono</th>
                   <th>Correo</th>
+                  <th>Telefono</th>
                   <th>Cantidad de Productos</th>
                   <th>Estado</th>
                   <th>Accion</th>
@@ -165,7 +165,7 @@ const Pedidos = () => {
                   ?
                   pedidos.data.map(pedido => (
                     <tr key={pedido.id}>
-                      <td onClick={() => goToDetailtPedido(pedido.id)} >{pedido.nombre_completo}</td>
+                      <td onClick={() => goToDetailtPedido(pedido.id)}>{pedido.nombre_completo}</td>
                       <td>{pedido.correo}</td>
                       <td>{pedido.telefono}</td>
                       <td>{pedido.pedidos.length}</td>

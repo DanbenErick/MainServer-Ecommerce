@@ -6,24 +6,26 @@ const ReporteMensual = () => {
   
   const [ select, setSelect ] = useState(null)
   const [ pedidos, setPedidos ] = useState([]) 
+  const [ precio, setPrecio ] = useState(0)
 
+  let precioTotal = 0
   let cantidadMensual = []
-  let repetido = {}
-  const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-  pedidos.forEach(numero => {
-    repetido[numero.name] = (repetido[numero.name] || 0) + 1
-  })
 
-  console.log("Llave unica: ", repetido); 
+  const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
   const getData = (id) => {
-    axios.get(`https://cms-metodos.herokuapp.com/clientes?mes_venta=${id}`)
+    axios.get(`https://cms-metodos.herokuapp.com/clientes?mes_venta=${id}&estado_pedido=Entregado`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      }
+    })
     .then(response => {
-      let lista_pedidos_arreglo = []
-      response.data.map(item => {
-        lista_pedidos_arreglo.push(...item.pedidos)
+      setPedidos(response.data)
+      response.data.map(pedido => {
+        console.log("Precio Total", pedido.precio_total)
+        precioTotal = parseInt(pedido.precio_total) + parseInt(precioTotal) 
       })
-      setPedidos(lista_pedidos_arreglo)
+      setPrecio(precioTotal)
     })
   }
 
@@ -51,32 +53,51 @@ const ReporteMensual = () => {
                 <button onClick={() => getData(select)} >Buscar</button>
               </div>
             <div className="container-table">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
+            <table>
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Telefono</th>
+                  <th>Cantidad de Producto</th>
+                  <th>Precio Total</th>
+                </tr>
+              </thead>
+              <tbody>
+              {
+                  pedidos.length > 0
+                  ?
+                    pedidos.map((pedido, index) => {
+                      console.log(pedido)
+                      return (
+                        <tr key={index}>
+                          <td>{pedido.nombre_completo}</td>
+                          <td>{pedido.telefono}</td>
+                          <td>{pedido.pedidos.length}</td>
+                          <td>S/.{pedido.precio_total}</td>
+                        </tr>
+                      )
+                      
+                    })
+                  :
+                    (<tr>
+                      <td colSpan="4">No hay ventas en esa semana</td>
+                    </tr>)
+                }
+                {
+                  pedidos.length > 0
+                  ?
+                  <tr style={{ background: '#004643', color: 'white' }}>
+                    <td><b>Ganancia de la Semana</b></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>S/.{precio}</b></td>
                   </tr>
-                </thead>
-                <tbody>
-                  {
-                    pedidos.length > 0
-                    ?
-                      Object.keys(repetido).map((llave,i)=>{
-                        return (
-                          <tr key={i}>
-                            <td>{llave}</td>
-                            <td>{repetido[llave]}</td>
-                          </tr>
-                          )
-                      })
-                    :
-                      (<tr>
-                        <td colSpan="2">No hay ventas en esa semana</td>
-                      </tr>)
-                  }
-                </tbody>
-              </table>
+                  :
+                  <>
+                  </>
+                }
+              </tbody>
+            </table>
             </div>
           </div>
       </section>
