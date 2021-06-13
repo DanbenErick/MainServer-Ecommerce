@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Header from '../components/Header.jsx'
 import Spinner from '../components/Spinner.jsx'
-
+import PaypalCheckoutButton from '../components/PaypalCheckoutButton.jsx'
 import StoreContext from '../context'
 
 import axios from 'axios'
@@ -19,12 +19,34 @@ const InformacionEnvio = () => {
   const direccion = useRef(null)
   const dni = useRef(null)
   const history = useHistory()
+  let new_carrito = []
+  let total_precio = 0
+  context.carrito.map(item => {
+    new_carrito.push({
+      sku: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: 1,
+      currency: 'USD'
+    })
+    total_precio = parseInt(item.price) + parseInt(total_precio)
+  })
+
+  const order= {
+    customer: '123456',
+    total: total_precio.toString(),
+    items:[ 
+      ... new_carrito
+    ]
+  }
 
   const [ loader, setLoader ] = useState(false)
   const [ precioTotal, setPrecioTotal] = useState(null)
+  const [ pago, setPago ] = useState(false)
 
   const goToPagar = (event) => {
     event.preventDefault()
+    alert("Click enviadn datos")
     if(nombreCompleto.current.value != "" && correoElectronico.current.value != "" && telefono.current.value != "" && direccion.current.value != "" && dni.current.value != "")  {
       const cliente = {
         name: nombreCompleto.current.value,
@@ -33,7 +55,6 @@ const InformacionEnvio = () => {
         address: direccion.current.value,
         dni: dni.current.value
       }
-      
       axios.post('https://cms-metodos.herokuapp.com/clientes', {
         nombre_completo: cliente.name,
         correo: cliente.email,
@@ -52,7 +73,6 @@ const InformacionEnvio = () => {
         cliente.id_pedido = response.data.id
       })
       setLoader(true)
-      
       context.addCliente(cliente)
       history.push('/carrito/confirmacion')
     } else {
@@ -65,7 +85,9 @@ const InformacionEnvio = () => {
   }
 
   useEffect(() => {
-    console.log("Carrito: informoacion: enveio", context.carrito)
+    
+    setPago(context.pago)
+
     let sumatoria = 0
     if(context.carrito != null) {
       context.carrito.map(item => {
@@ -102,7 +124,19 @@ const InformacionEnvio = () => {
                 <input ref={dni} type="number" required/>
             </div>
             <div className="input-group">
-              <button type="submit" onClick={goToPagar}>Ir a Pagar</button>
+              {
+                !context.pago
+                ?
+                  (
+                    <PaypalCheckoutButton
+                      order={order}
+                    />
+                  )
+                :
+                (
+                  <button onClick={goToPagar}>Continuar</button>
+                )
+              }
             </div>
           </form>
         </div>
@@ -119,21 +153,3 @@ const InformacionEnvio = () => {
 }
 
 export default InformacionEnvio
-
-
-// let formData = new FormData();    //formdata object
-
-// formData.append('name', 'ABC');   //append the values with key, value pair
-// formData.append('age', 20);
-
-// const config = {     
-//     headers: { 'content-type': 'multipart/form-data' }
-// }
-
-// axios.post(url, formData, config)
-//     .then(response => {
-//         console.log(response);
-//     })
-//     .catch(error => {
-//         console.log(error);
-//     });

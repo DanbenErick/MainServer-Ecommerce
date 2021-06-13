@@ -12,7 +12,6 @@ import Carrito from './pages/Carrito.jsx'
 import Confirmacion from './pages/Confirmacion.jsx'
 import Detalles from './pages/Detalles.jsx'
 import InformacionEnvio from './pages/InformacionEnvio.jsx'
-import Pago from './pages/Pago.jsx'
 import RegistrarProducto from './pages/RegistrarProducto.jsx';
 import Empleado from './pages/Empleado.jsx'
 import ListaCitas from './pages/ListaCitas.jsx'
@@ -39,6 +38,7 @@ const App = () => {
   const [carrito, setCarrito] = useState([])
   const [cliente, setCliente] = useState({})
   const [token, setToken] = useState(null)
+  const [pago, setPago] = useState(false)
 
   const context = useContext(StoreContext)
 
@@ -64,8 +64,16 @@ const App = () => {
     setCarrito(carritos)
   }
 
+  const truePago = () => {
+    setPago(true)
+  }
+  
+  const falsePago = () => {
+    setPago(false)
+  }
+
   return (
-    <StoreContext.Provider value={{carrito, cliente, addCarrito, removeCarrito, addCliente, token, addToken}}>
+    <StoreContext.Provider value={{carrito, cliente, pago, truePago, falsePago, addCarrito, removeCarrito, addCliente, token, addToken}}>
       <React.Fragment>
           <HashRouter>
             <Nav />
@@ -206,14 +214,6 @@ const App = () => {
                   <title>Informacion de Envio</title>
                 </Helmet>
                 <InformacionEnvio />
-              </Route>
-              <Route path="/carrito/pagar" exact>
-                <Helmet>
-                  <meta charset="utf-8"/>
-                  <link rel="stylesheet" href="./dist/css/style-index.css" />
-                  <title>Pago</title>
-                </Helmet>
-                <Pago />
               </Route>
               <Route path="/carrito/confirmacion" exact>
                 <Helmet>

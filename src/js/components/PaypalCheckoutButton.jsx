@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useHistory } from 'react-router'
 import ReactDOM from 'react-dom'
 import paypal from 'paypal-checkout'
+import StoreContext from '../context'
+import { ContextConsumer } from 'react-is'
 
 
+const PaypalCheckoutButton = ({ order, informacion }) => {
 
-const PaypalCheckoutButton = ({ order }) => {
-
+  const history = useHistory()
+  const context = useContext(StoreContext)
   const paypalConf = {
     currency: "USD",
     env: 'sandbox',
     client: {
-      sandbox: 'AX9cSMTq1KMs1dJXT9TMkM1LnxhNGn65rIiDpK4CaixTaY7R2GRMkLKZzvDJ6T_HflCDTy3ccUSV3h-b',
-      production: '-- id --'
+      sandbox: 'AbwHN_BpiTM60KMPXWjdq-_NUdLWD3B7AsQ2S3iynJSb8LSMQ-FyijzmOaTy7FN-fKhKmuKV8p3iZ95c',
     },
     style: {
       label: 'pay',
@@ -50,6 +53,7 @@ const PaypalCheckoutButton = ({ order }) => {
     .then(response => {
       console.log(response)
       alert('El pago fue procesado correctamente, ID:', response.id)
+      context.truePago()
     })
     .catch(error => {
       console.log(error)
