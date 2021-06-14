@@ -72,7 +72,7 @@ const RegistrarEmpleado = () => {
 
   return (
     <>
-      <Header title="Registrar Producto" />
+      <Header title="Registrar Empleado" />
       <section className="registrar-producto">
         <div className="contenedor-form">
           <form>
@@ -93,7 +93,7 @@ const RegistrarEmpleado = () => {
               <input type="password" ref={new_password} />
             </div>
             <div className="input-group">
-              <button type="button" onClick={registrarEmpleado}>Guardar Producto</button>
+              <button type="button" onClick={registrarEmpleado}>Crear Empleado</button>
             </div>
           </form>
         </div>
