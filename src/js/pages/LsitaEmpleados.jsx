@@ -40,7 +40,7 @@ const ListaEmpleados = () => {
       data: []
     })
     axios.put(`${strapiAPI}/users/${id}`, {
-      confirmed: true
+      blocked: false
     },
     {
       headers: {
@@ -59,7 +59,7 @@ const ListaEmpleados = () => {
       data: []
     })
     axios.put(`${strapiAPI}/users/${id}`, {
-      confirmed: false
+      blocked: true
     },
     {
       headers: {
@@ -101,6 +101,10 @@ const ListaEmpleados = () => {
             <table>
               <thead>
                 <tr>
+                  <th>Nombre Completo</th>
+                  <th>Direccion</th>
+                  <th>Celular</th>
+                  <th>DNI</th>
                   <th>Usuario</th>
                   <th>Email</th>
                   <th>Activo</th>
@@ -115,6 +119,10 @@ const ListaEmpleados = () => {
                       if(empleado.role.name != "Administrador") {
                         return (
                           <tr key={empleado.id}>
+                            <td>{empleado.nombres + empleado.apellidos}</td>
+                            <td>{empleado.direccion}</td>
+                            <td>{empleado.celular}</td>
+                            <td>{empleado.dni}</td>
                             <td>{empleado.username}</td>
                             <td>{empleado.email}</td>
                             <td>{empleado.confirmed ? 'Activo': 'Inactivo'}</td>

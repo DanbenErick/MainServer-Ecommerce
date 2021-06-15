@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import Header from '../components/Header.jsx'
+import { jsPDF } from 'jspdf'
+
 
 // import "../../../dist/css/style-pedidos.css"
 import StoreContext from '../context'
@@ -21,6 +23,56 @@ const Pedidos = () => {
 
   const goToDetailtPedido = (id) => {
     history.push('/empleado/pedidos/' +  id)
+  }
+
+  const documento = (id) => {
+    
+    const doc = new jsPDF();
+  
+    doc.text("Comprobante de Pago", 10, 30);
+
+    const generateData = (amount) => {
+      var result = [];
+
+      amount.map((producto, index) => {
+        data.id = index.toString();
+        result.push(Object.assign({}, {
+          producto: producto.name,
+          cantidad: 1,
+          precio: producto.price,
+        }));
+      })
+      return result;
+    };
+
+    const createHeaders = (keys) => {
+      let result = [];
+      for (let i = 0; i < keys.length; i += 1) {
+        result.push({
+          id: keys[i],
+          name: keys[i],
+          prompt: keys[i],
+          width: 65,
+          align: "center",
+          padding: 0
+        });
+      }
+      return result;
+    }
+
+    const headers = createHeaders([
+      "producto",
+      "cantidad",
+      "precio",
+    ])
+    
+    axios.get(`${strapiAPI}/clientes/${id}`)
+    .then(respuesta => {
+      console.log("Datos!?", respuesta.data.pedidos)
+      doc.table(10, 40, generateData(respuesta.data.pedidos), headers, { autoSize: true })
+      doc.save("boleta.pdf");
+    })
+
   }
 
   const traerPedidos = () => {
@@ -174,6 +226,7 @@ const Pedidos = () => {
                         <button onClick={() => cambiarEntregado(pedido.id)}>Entregado</button>
                         <button onClick={() => cambiarRechazado(pedido.id)}>Rechazado</button>
                         <button onClick={() => cambiarTransito(pedido.id)}>En Transito</button>
+                        <button onClick={() => documento(pedido.id)}>Boleta</button>
                       </td>
                     </tr>
                   ))

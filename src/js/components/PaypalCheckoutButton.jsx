@@ -52,20 +52,20 @@ const PaypalCheckoutButton = ({ order, informacion }) => {
     return actions.payment.execute()
     .then(response => {
       console.log(response)
-      alert('El pago fue procesado correctamente, ID:', response.id)
+      // alert('El pago fue procesado correctamente, ID:', response.id)
       context.truePago()
     })
     .catch(error => {
       console.log(error)
-      alert('Ocurrio un error al procesar el pago con PayPal')
+      // alert('Ocurrio un error al procesar el pago con PayPal')
     })
   }
   const onError = (error) => {
     console.log(error)
-    alert('EL pago no fue realizado')
+    // alert('EL pago no fue realizado')
   }
   const onCancel = (data, actions) => {
-    alert('pago no realizado, el usuario cancelo el proceso')
+    // alert('pago no realizado, el usuario cancelo el proceso')
   }
 
   return (

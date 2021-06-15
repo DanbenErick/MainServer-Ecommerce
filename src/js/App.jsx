@@ -26,6 +26,8 @@ import Administrador from './pages/Administrador.jsx'
 import PerfilAdministrador from './pages/PerfilAdministrador.jsx'
 import RegistrarEmpleado from './pages/RegistrarEmpleado.jsx'
 import ListaEmpleados from './pages/LsitaEmpleados.jsx'
+import EstadoCita from './pages/EstadoCita.jsx'
+
 
 // Data Inicial
 import data from '../database/data'
@@ -85,6 +87,14 @@ const App = () => {
                   <title>Productos | Tienda | MainServer</title>
                 </Helmet>
                 <Productos productos={data} loader={true}/>
+              </Route>
+              <Route path="/estado-cita/:idParam" exact >
+                <Helmet>
+                  <meta charset="utf-8"/>
+                  <link rel="stylesheet" href="./dist/css/style-confirmacion.css" />
+                  <title>Estado de la Cita</title>
+                </Helmet>
+                <EstadoCita />
               </Route>
               <Route path="/administrador" exact >
                 <Helmet>

@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import Header from '../components/Header.jsx'
 import axios from 'axios'
-// import "../../../dist/css/style-detalle-pedidos.css"
 import StoreContext from '../context'
+
 const PedidoDetalle = () => {
   const strapiAPI = 'https://cms-metodos.herokuapp.com'
   const context = useContext(StoreContext)

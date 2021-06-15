@@ -29,7 +29,7 @@ const Productos = (props) => {
                     </div>
                     <div className="informacion_producto">
                       <p className="informacion_producto_titulo">{producto.nombre}</p>
-                      <p className="precio_producto_titulo">S/. {producto.precio}</p>
+                      <p className="precio_producto_titulo">S/. {producto.precio * 3.50}</p>
                     </div>
                   </article>
                 </Link>

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import Header from "../components/Header.jsx";
 import Modal from "../components/Modal.jsx";
-import { Helmet } from "react-helmet";
 import axios from "axios";
 import Swal from "sweetalert2";
 const Citas = () => {
@@ -44,6 +43,7 @@ const Citas = () => {
           setModal({
             ok: true,
             nombre: nombre_completo.current.value,
+            id: response.data.id
           });
           nombre_completo.current.value = "";
           correo.current.value = "";
@@ -97,7 +97,7 @@ const Citas = () => {
           </form>
         </div>
       </section>
-      {modal.ok ? <Modal nombre={modal.nombre} onClick={hideModal} /> : null}
+      {modal.ok ? <Modal nombre={modal.nombre} id={modal.id} onClick={hideModal} /> : null}
     </>
   );
 };

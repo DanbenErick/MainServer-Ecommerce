@@ -17,6 +17,7 @@
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.1.1",
+    "jspdf": "^2.3.1",
     "mercadopago": "^1.5.7",
     "moment": "^2.29.1",
     "path": "^0.12.7",

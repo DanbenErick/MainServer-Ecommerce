@@ -46,7 +46,7 @@ const InformacionEnvio = () => {
 
   const goToPagar = (event) => {
     event.preventDefault()
-    alert("Click enviadn datos")
+    // alert("Click enviadn datos")
     if(nombreCompleto.current.value != "" && correoElectronico.current.value != "" && telefono.current.value != "" && direccion.current.value != "" && dni.current.value != "")  {
       const cliente = {
         name: nombreCompleto.current.value,

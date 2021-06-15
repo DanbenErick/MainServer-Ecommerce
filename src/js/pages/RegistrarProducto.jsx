@@ -1,11 +1,14 @@
 import React, { useContext, useRef, useState } from 'react'
 
 import Header from '../components/Header.jsx'
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import axios from 'axios'
 import StoreContext from '../context'
 
 const RegistrarProducto = () => {
+
+  const MySwal = withReactContent(Swal)
 
   const context = useContext(StoreContext)
   const [ file, setFile ] = useState({})
@@ -39,7 +42,11 @@ const RegistrarProducto = () => {
         }
       })
       .then(res => {
-        alert("Producto creado")
+        MySwal.fire({
+          title: 'Exito!!',
+          icon: 'success',
+          text: 'Producto creado correctamente'
+        })
         nombre.current.value = ''
         descripcion.current.value = ''
         precio.current.value = ''

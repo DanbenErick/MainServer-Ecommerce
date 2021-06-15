@@ -1,6 +1,13 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 
-const Modal = ({nombre}) => {
+const Modal = ({nombre, id}) => {
+
+  const history = useHistory()
+
+  const goToDetailCita = (id) => {
+    history.push(`estado-cita/${id}`)
+  }
 
   return (
     <div className="modal">
@@ -15,6 +22,7 @@ const Modal = ({nombre}) => {
           <div className="informacion-texto">
             <p>Le llamaremos para confirmar su cita</p>
             <p className="informacion-nombre">{nombre}</p>
+            <button onClick={() => goToDetailCita(id)} style={{ color: '#004643' }}>Ver estado de cita</button>
           </div>
         </div>
       </div>

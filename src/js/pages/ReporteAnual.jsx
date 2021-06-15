@@ -2,15 +2,23 @@ import React, { useState } from 'react'
 import Header from '../components/Header.jsx'
 import axios from 'axios'
 import Spinner from '../components/Spinner.jsx'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import moment from 'moment'
+
+
 const ReporteAnual = () => {
+
+  const MySwal = withReactContent(Swal)
   const [ loader, setLoader ] = useState(false)
   const [ select, setSelect ] = useState(null)
   const [ pedidos, setPedidos ] = useState([]) 
   const [ precio, setPrecio ] = useState(0)
+  const strapiAPI = 'https://cms-metodos.herokuapp.com'
   let precioTotal = 0
 
   const getData = (id) => {
-    axios.get(`https://cms-metodos.herokuapp.com/clientes?ano_venta=${id}&estado_pedido=Entregado`, {
+    axios.get(`${strapiAPI}/clientes?ano_venta=${id}&estado_pedido=Entregado`, {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem('token')}`
       }
@@ -28,6 +36,65 @@ const ReporteAnual = () => {
   const handleSelect = (event) => {
     setSelect(event.target.value)
   }
+
+  const getDetails = (id) => {
+    axios.get(`${strapiAPI}/clientes/${id}`, {
+      headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`
+      }
+    })
+    .then(respuesta => {
+      const { data } = respuesta
+      MySwal.fire({
+        title: 'Informacion Completa',
+        html: `<div class="informacion">
+                <b>Nombre Completo</b>
+                <p>${data.nombre_completo}</p>
+              </div>
+              <br />
+              <div class="informacion">
+                <b>Correo</b>
+                <p>${data.correo}</p>
+              </div>
+              <br />
+              <div class="informacion">
+                <b>Telefono</b>
+                <p>${data.telefono}</p>
+              </div>
+              <br />
+              <div class="informacion">
+                <b>Direccion</b>
+                <p>${data.direccion}</p>
+              </div>
+              <br />
+              <div class="informacion">
+                <b>DNI</b>
+                <p>${data.dni}</p>
+              </div>
+              <br />
+              <div class="informacion">
+                <b>Estado del Pedido</b>
+                <p>${data.estado_pedido}</p>
+              </div>
+              <br />
+              <div class="informacion">
+                <b>Fecha de Registro</b>
+                <p>${moment(data.fecha_compra).format('DD-MM-YYYY')}</p>
+              </div>
+              <br />
+              <div class="informacion">
+                <b>Fecha de confirmacion de pedido</b>
+                <p>${moment(data.updated_at).format('DD-MM-YYYY') || 'Sin registro'}</p>
+              </div>
+              <br />
+              <div class="informacion">
+                <b>Productos</b>
+                <p>${data.pedidos.map(pedido => "<p>"+ pedido.name + "</p>" + "<b> S/." + pedido.price +"</b>")}</p>
+              </div>`
+      })
+    })
+  }
+
   return (
     <>
       <Header title="Reporte Anual" />
@@ -59,7 +126,7 @@ const ReporteAnual = () => {
                       console.log(pedido)
                       return (
                         <tr key={index}>
-                          <td>{pedido.nombre_completo}</td>
+                          <td onClick={() => getDetails(pedido.id)}>{pedido.nombre_completo}</td>
                           <td>{pedido.telefono}</td>
                           <td>{pedido.pedidos.length}</td>
                           <td>S/.{pedido.precio_total}</td>
