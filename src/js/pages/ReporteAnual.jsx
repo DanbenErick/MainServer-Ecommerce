@@ -89,7 +89,7 @@ const ReporteAnual = () => {
               <br />
               <div class="informacion">
                 <b>Productos</b>
-                <p>${data.pedidos.map(pedido => "<p>"+ pedido.name + "</p>" + "<b> S/." + pedido.price +"</b>")}</p>
+                <p>${data.pedidos.map(pedido => "<p>"+ pedido.name + "</p>" + "<b> S/." + pedido.price * 3.50 +"</b>")}</p>
               </div>`
       })
     })
@@ -129,7 +129,7 @@ const ReporteAnual = () => {
                           <td onClick={() => getDetails(pedido.id)}>{pedido.nombre_completo}</td>
                           <td>{pedido.telefono}</td>
                           <td>{pedido.pedidos.length}</td>
-                          <td>S/.{pedido.precio_total}</td>
+                          <td>S/.{pedido.precio_total * 3.50}</td>
                         </tr>
                       )
                       
@@ -146,7 +146,7 @@ const ReporteAnual = () => {
                     <td><b>Ganancia de la Semana</b></td>
                     <td></td>
                     <td></td>
-                    <td><b>S/.{precio}</b></td>
+                    <td><b>S/.{precio * 3.50}</b></td>
                   </tr>
                   :
                   <>

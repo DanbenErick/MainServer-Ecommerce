@@ -55,7 +55,7 @@ const Detalles = () => {
             <div className="detalle-informacion">
               <h2>{item.data.nombre}</h2>
               <p>{item.data.descripcion}</p>
-              <p>S/. {item.data.precio}</p>
+              <p>S/. {item.data.precio * 3.50}</p>
               <p><b>Los envios estan disponibles para (Junin, Lima y Pasco)</b></p>
               <button type="button" onClick={addToCart}>Añadir al Carrito</button>
             </div>

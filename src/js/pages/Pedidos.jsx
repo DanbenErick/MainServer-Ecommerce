@@ -26,51 +26,64 @@ const Pedidos = () => {
   }
 
   const documento = (id) => {
-    
-    const doc = new jsPDF();
-  
-    doc.text("Comprobante de Pago", 10, 30);
-
-    const generateData = (amount) => {
-      var result = [];
-
-      amount.map((producto, index) => {
-        data.id = index.toString();
-        result.push(Object.assign({}, {
-          producto: producto.name,
-          cantidad: 1,
-          precio: producto.price,
-        }));
-      })
-      return result;
-    };
-
-    const createHeaders = (keys) => {
-      let result = [];
-      for (let i = 0; i < keys.length; i += 1) {
-        result.push({
-          id: keys[i],
-          name: keys[i],
-          prompt: keys[i],
-          width: 65,
-          align: "center",
-          padding: 0
-        });
-      }
-      return result;
-    }
-
-    const headers = createHeaders([
-      "producto",
-      "cantidad",
-      "precio",
-    ])
-    
+    let new_pedidos = []
+    let precio_total_nuevo_pedido = 0
     axios.get(`${strapiAPI}/clientes/${id}`)
     .then(respuesta => {
-      console.log("Datos!?", respuesta.data.pedidos)
-      doc.table(10, 40, generateData(respuesta.data.pedidos), headers, { autoSize: true })
-      doc.save("boleta.pdf");
+      
+
+      var doc = new jsPDF()
+      doc.setFontSize(20)
+      doc.text("Comprobante de Pago!", 60, 20)
+      doc.setFontSize(12)
+      doc.text(`Nombre Completo: ${respuesta.data.nombre_completo}`, 20, 30)
+      doc.setFontSize(12)
+      doc.text(`DNI: ${respuesta.data.dni}`, 20, 40)
+      doc.setFontSize(12)
+      doc.text(`Direccion: ${respuesta.data.direccion}`, 20, 50)
+
+      const getData = () => {
+      
+        respuesta.data.pedidos.map(pedido => {
+          precio_total_nuevo_pedido += (parseInt(pedido.price)*3.50) 
+          new_pedidos.push({
+            nombre: pedido.name,
+            cantidad: "1",
+            precio: 'S/.' + (pedido.price * 3.50),
+          });
+         
+        })
+        new_pedidos.push({
+          nombre: "Total",
+          cantidad: "",
+          precio: 'S/.' + precio_total_nuevo_pedido
+        })
+        return new_pedidos 
+      }
+
+      const createHeaders = (keys) => {
+        var result = [];
+        for (var i = 0; i < keys.length; i += 1) {
+          result.push({
+            id: keys[i],
+            name: keys[i],
+            prompt: keys[i],
+            width: 65,
+            align: "center",
+            padding: 0
+          });
+        }
+        return result;
+      }
+
+      const headers = createHeaders([
+        "nombre",
+        "cantidad",
+        "precio",
+      ])
+
+      doc.table(20, 60, getData(), headers)
+      doc.save('boleta.pdf')
     })
 
   }

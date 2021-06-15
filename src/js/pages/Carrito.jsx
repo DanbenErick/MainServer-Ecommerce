@@ -40,7 +40,7 @@ const Carrito = () => {
                 </div>
                 <div className="producto-informacion">
                   <h2>{itemCarrito.name}</h2>
-                  <p>S/. {itemCarrito.price}</p>
+                  <p>S/. {itemCarrito.price * 3.50}</p>
                   <p>{itemCarrito.description}</p>
                 </div>
                 <div className="producto-boton">
@@ -55,7 +55,7 @@ const Carrito = () => {
             (<div className="total">
               <div className="total-informacion">
                 <h2>Subtotal</h2>
-                <p>S/. {precioTotal}</p>
+                <p>S/. {precioTotal * 3.50}</p>
               </div>
               <button type="button" onClick={goToConfirmation}>Siguiente Paso</button>
             </div>)
